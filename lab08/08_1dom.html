@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lab08</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header>
+    <h1>DOM</h1>
+  </header>
+    <button id="btn">button</button>
+    <!-- <button id="btn">button1</button> -->
+    <ul>
+      <li>item li</li>
+      <li>item li</li>
+    </ul>
+    <input type="checkbox" name="checkboxGruop" >1
+    <input type="checkbox" name="checkboxGruop" >2
+    <input type="checkbox" name="checkboxGruop" >3
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+  <script>
+    /* 
+      document.getElementById()
+        回傳元素
+    */
+    let btn=document.getElementById('btn');
+    // console.log(btn);
+    /* 
+      document.getElementsByTagName()
+        回傳HTMLCollection物件 類陣列
+          .item(i)
+          .nameditem(id/name) id/name屬性
+    */
+    let li=document.getElementsByTagName('li');
+    // console.log(li)
+    for(let i=0;i<li.length;i++){
+      // console.log(li[i]);
+      // console.log(li.item(i));
+    }
+    /* 
+            body
+            document中只有一個body屬性
+        */
+    let body=document.getElementsByTagName('body');
+    console.log(body[0]); 
+    
+    /* 
+      document.getElementsByName()
+        回傳NodeList物件
+          可以視為同一個物件 不能使用.nameditem()
+    */
+    let checkboxs=document.getElementsByName('checkboxGruop');
+    // console.log(checkboxs);
+    for(let i=0;i<checkboxs.length;i++){
+      // console.log(checkboxs[i])
+      // console.log(checkboxs.item(i))
+    }
+    /* 
+      document.getElementsByClassName()
+        回傳HTMLCollection物件 類陣列
+        classname參去 可以用著間以空白格開
+    */
+    let box=document.getElementsByClassName('box');
+        // console.log(box)
+
+    /* 
+      document.querySelector()
+      document.querySelectorAll()
+    */
+    let box1= document.querySelector('.box');
+        // console.log(box1);
+
+        let boxAll=document.querySelectorAll('.box');
+        // console.log(boxAll);
+  </script>
+</body>
+</html>

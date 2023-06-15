@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lab01</title>
+    <style>
+      body {
+        font-size: 17px;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: white;
+      }
+      header {
+        background-color: black;
+        color: rgb(252, 220, 0);
+        padding: 20px;
+        text-align: center;
+        /* margin-bottom: 10px; */
+      }
+      .container {
+        width: 90%;
+        margin: auto;
+        padding: 10px;
+      }
+    </style>
+    <script>
+      // javascript code
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>JavaScript</h1>
+    </header>
+    <!-- 也可以把事件寫在標籤裡 但不推薦 屬於結構與行為耦合 不方便維護  -->
+    <button onclick="alert('button alert')">123</button>
+    <a href="javascript:alert('超連結 alert')">超連結</a>
+    <script>
+      // 單行註解 javascript code
+      /*
+            多行註解 內容不會被執行
+            要養成良好註解習慣 可以對你的程式說明參數 功能 等
+        */
+      /* 
+            ; 不加分號 瀏覽器會自動添加 會消耗一點效能
+                瀏覽器可能會加錯<機率很小 但不是0
+        */
+      // window.alert("hello javascript");
+      alert("hello javascript");
+    </script>
+    <script src="./all.js">
+      // 一但引入外部js 內部就不會執行
+      window.alert('內部js')
+    </script>
+    <script src="./all2.js"></script>
+  </body>
+</html>

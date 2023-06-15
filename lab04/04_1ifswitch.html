@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lab</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>if switch</h1>
+    </header>
+    <script>
+      /* 
+      js 程式 從上到下
+          通過流程控制語法 可以控制執行流程
+          使程式根據條件選擇執行
+
+      if 
+          - if(條件){}
+          
+          - if(條件 && 條件 ){}
+
+          - if(){
+
+              }else{}
+
+          -if(){
+              
+          }else if(){
+
+          }else{
+              所有條件皆為false時執行指令區塊
+          }
+
+          符合多個條件時 只會執行第一個符合的程式區塊
+
+          if nest 
+
+  */
+      if (true) {
+        // console.log("123");
+      }
+      let a = 11;
+      if (a > 10) {
+        // console.log("a比10大");
+      }
+      // 在js中可以省略{} 但不建議省略
+      if (a > 9) console.log("aaa");
+      // &&
+      let b = 20;
+      if (b > 10 && b <= 20) {
+        // console.log("b大於10 b小於等於20");
+      } else {
+        // console.log("gg");
+      }
+      // if else if ng
+      let x = 30;
+      if(x>=10){
+          console.log('x>=10')
+      }else if(x>=20){
+          console.log('x>=20')
+      }else{
+          console.log('x')
+      }
+      // if else correct
+      if (x >= 10 && x < 20) {
+        console.log("x>=10");
+      } else if (x >= 20 && x < 30) {
+        console.log("x>=20");
+      } else {
+        console.log("x > 30");
+      }
+      // if nest
+      let y = 18;
+      if (y >= 10) {
+        if (y >= 20) {
+          console.log("y>=20");
+        } else {
+          console.log("y >= 10 ,y< 20");
+        }
+      } else {
+        console.log("x <10");
+      }
+      // let num='1';
+      // case > ===
+      let num = 1;
+      switch (num) {
+        case 1:
+          console.log("num=1");
+        // break;
+        case 2:
+          console.log("num=2");
+        // break;
+        default:
+          console.log("no");
+      }
+
+      // 注意switch let宣告
+      /* switch指令將整個條件分歧區塊視為單一區塊
+            case是標籤語法 不是區塊
+        */
+       let i=0;
+        switch (i) {
+        case 0:
+          let value = "x:0";
+        case 1:
+        // let value='x:1'; // 變數名稱重複
+      }
+
+      /* 
+            分數大於60 合格
+                小於60 不合格
+        */
+      let score = 60;
+      // switch(score/10){
+      //     case 10:
+      //     case 9:
+      //     case 8:
+      //     case 7:
+      //     case 6:
+      //         console.log('合格')
+      //         break;
+      //     default:
+      //         console.log('不合格')
+      // }
+      switch (true) {
+        case score >= 60:
+          console.log("合格");
+          break;
+        default:
+          console.log("不合格");
+      }
+    </script>
+  </body>
+</html>

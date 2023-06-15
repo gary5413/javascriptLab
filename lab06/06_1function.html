@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lab</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>function</h1>
+    </header>
+    <script>
+      /* 
+      function 
+          - 也是個物件
+          - 函數中可以封裝一些程式碼 在需要時執行
+          - 保存一些程式碼需要時調用
+  */
+      let obj = new Object();
+      // 創建函數
+      // //很少使用建構子函數創建
+      let fun = new Function("console.log('Hello 這是我的第一個js函數');");
+      // 封裝到函數中的程式碼不會立即執行
+
+      // 使用函數 函數對象 +()
+      // fun();
+
+      // console.log(fun);
+      // 物件屬性
+      fun.hello = "你好";
+      // console.log(fun.hello);
+      /* 
+      function 函數名([參數1,參數2]){
+          語句...
+      }
+
+      let 函數名 =function([參數1,參數2]){
+          語句...
+      }
+  */
+//  fun2();
+      function fun2() {
+        console.log("這是我第二個函數");
+        document.write("");
+      }
+      // console.log(fun2);
+      // console.log(fun3())
+      // 第三種方式 匿名函數賦值給一個變數
+      let fun3 = function () {
+        console.log("123");
+      };
+
+      /* 
+      函數()設定一個或多個參數
+      參數之間用,隔開    
+  
+      定義兩數之和函數
+  */
+      function sum(x, y) {
+        // let a=1;
+        // let b=1;
+        // console.log(a+b);
+        console.log("x=" + x);
+        console.log("y=" + y);
+        console.log(x + y);
+        return x + y;
+      }
+      // 調用函數時 可以在()中指定參數
+      // 調用參數時不會檢查 參數資料型別
+      // 所以要注意是否有可能會接收到非法參數，如果需要要對參數類型檢查
+      // sum(1, 2);
+      // sum(true, false);
+      // 也不會檢查參數量
+      // sum(123, 456, "123", null);
+      // 沒有參數的話會是undefined
+      // sum(123); //NaN
+
+      //返回值
+      function sum3(a, b, c) {
+        // console.log(a+b+c);
+        let answer = a + b + c;
+        // return answer;
+        // return 不寫返回值或不寫return 就會回傳undefined
+        return;
+        // return語句都不會執行
+        console.log("hello");
+      }
+      // 接受函數的返回值
+      let result = sum3(1, 2, 3);
+      // console.log(result);
+
+      // let a=alert('hello');
+      // console.log(a)
+
+      /* 
+  定義一個函數判斷是否是偶數
+  */
+      function isEven(num) {
+        // if(num%2 ==0){
+        //     return true;
+        // }else{
+        //     return false;
+        // };
+        return num % 2 == 0;
+      }
+      let result2 = isEven(5);
+      // console.log(result2);
+
+      /* 
+  定義一個計算圓面積
+  */
+      function circle(r) {
+        return 3.14 * r * r;
+      }
+      let result3 = circle(5);
+      // console.log(result3);
+
+      /* 
+ 定義一個函數 可在控制台輸出訊息
+  name age gender address
+ */
+
+      function sayhello(name, age, gender, address) {
+        console.log(`我是${name},今年${age},性別是${gender},家住${address}`);
+        //  參數變多就會出現差錯
+      }
+      // sayhello("Gary", "18", "mela", "f304");
+      //  使用傳遞物件的方式傳參數
+      function sayhello2(obj) {
+        console.log(this);
+        console.log(
+          `我是${obj.name},今年${obj.age},性別是${obj.gender},家住${obj.address}`
+          // `我是${this.name},今年${this.age},性別是${this.gender},家住${this.address}` //此this是windows物件
+          );
+      }
+      let objo = {
+        name: "Gary",
+        age: 18,
+        gender: "mela",
+        address: "f304",
+      };
+      sayhello2(objo);
+      // 參數也可以放函數
+      function fun4(a) {
+        console.log("a=" + a);
+        // a指向sayhello2函數
+        // a(objo); // 形同於 sayhello2(objo)
+        // 將匿名函數變成參數傳遞
+      }
+      // fun4(sayhello2);
+      /* 
+      circle()
+          使用函數
+          使用函數返回值
+
+      circle
+          函數物件
+          相當於直接使用物件
+
+  */
+      fun4(sum(1,2));
+      fun4(sum);
+      // fun4(circle(3));
+      // fun4(circle);
+
+      function fun5() {
+        console.log("函數開始執行");
+        for (let i = 0; i < 5; i++) {
+          if (i == 2) {
+            // break退出循環
+            // break;
+            // 使用跳過當次循環
+            // continue;
+            // 直接結束函數
+            return;
+          }
+          console.log(i);
+        }
+        console.log("函數結束執行");
+      }
+      fun5();
+
+      // 返回值可以是任意 資料型別
+      function fun6() {
+        // return 10;
+        let obj = { name: "gary" };
+        return obj;
+      }
+
+      let a = fun6();
+      // console.log('a='+a);
+      console.log("a=" + a.name);
+
+      function fun7() {
+        // 在函數內部聲明一個函數
+        function fun8() {
+          console.log("我是fun8");
+        }
+        fun8();
+        return fun8;
+        return fun8(); //undefined fun8未設定返回值
+      }
+      let b = fun7();
+      // console.log(b);
+      // b(); //回傳的是function本身 不是返回值
+      // 另一種寫法 兩個部分
+      // fun7()();
+
+      // 立即執行函數 IIFE
+      // 不能這樣寫  不允許這樣寫他會把大括號視為{程式區塊}
+      // function(){
+      //     console.log('匿名函數');
+      // }
+      // 用一個()來包住 代表整體函數
+      (function () {
+        console.log("匿名函數");
+        // +() 立即執行函數
+        // 只會執行一次
+      })();
+      (function (a, b) {
+        console.log("a=" + a);
+        console.log("b=" + b);
+      })("gary", "ipsn");
+
+      /* 
+        arror function
+          若本體只有單行敘述
+            可省略{} let getTriangle=(base,height)=> base*height/2;
+          若只有一個參數可省略()
+            let getCircle=radius => radius*radius*Math.PI;
+          若沒有參數則需保留括號
+            let show=()=>console.log('hello');
+          
+          提醒若要使用此箭頭函數傳回值此物件 要用括號包住
+            let func=()=>({foo:'bar'})
+        有固定的this
+      */
+      let getTriangle=(base,height)=>{
+        return base*height/2;
+      }
+
+      /* 
+        參數
+      */
+      function getTriangle1(base=1,height=1){
+        return base*height/2;
+      }
+      console.log(getTriangle1(5)); //2.5
+
+      /* 
+      call() apply()
+      這兩個方法都是函數物件方法
+      需要通過函數物件來使用
+      使用call()或apply()可以將物件指定第一個參數
+          此時物件會成為函數執行this
+      call()方法可以將參數物件之後依序傳遞
+      apply()方法需要將參數封裝到一個陣列中統一傳遞
+
+      this情況
+          1.以函數方式使用 this > window
+          2.以物件方法使用 this >該物件
+          3.建構子函數使用 this >新創建物件
+          4.使用call()或apply() this >指定物件 
+      */
+      function fun9(a, b) {
+        // console.log('我是fun9');
+        console.log(this);
+        // console.log("a=" + a);
+        // console.log("b=" + b);
+      }
+      let obj5 = {
+        name: "obj5",
+        sayName: function () {
+          console.log(this.name);
+        },
+      };
+      let obj6 = { name: "obj6" };
+      // fun9.call();
+      // fun9.apply();
+      // fun9();
+
+      // fun9();
+      // fun9.call(obj5);
+      // fun9.apply(obj5);
+      // obj5.sayName();
+      // obj5.sayName.apply(obj6);
+      // fun9.call(obj5, 2, 3);
+      // fun9.apply(obj5,2,3);
+      // fun9.apply(obj5, [2, 3]);
+
+      /* 
+      arguments
+      在使用函數時 其實都會傳遞兩個參數
+      1. this
+      2. arguments
+              類陣列物件 可以透過索引來操作資料
+              我們所傳遞的參數都會在arguments儲存
+              arguments.length可以用來或去參數長度
+              我們不定義 也可以通過 獲得參數
+              arguments[i] 第i個參數
+              callee屬性
+                  對應一個函數物件 就是當前執行函數
+  */
+      function fun10() {
+        // console.log(arguments);
+        // console.log(arguments instanceof Array);
+        // console.log(arguments.length);
+        // console.log(arguments[0]);
+        // console.log(arguments.callee);
+        console.log(arguments.callee == fun10);
+      }
+      // fun10("hello", true);
+    </script>
+  </body>
+</html>

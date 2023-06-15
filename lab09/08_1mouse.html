@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lab</title>
+    <link rel="stylesheet" href="../style.css" />
+    <style>
+        div.out {
+        height: 250px;
+        width: 40%;
+        margin: 0 15px;
+        background-color: lightgreen;
+        float: left;
+      }
+      div.in {
+        width: 60%;
+        height: 60%;
+        background-color: lightblue;
+        margin: 10px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>mouse event</h1>
+    </header>
+    <button id="btn">button</button>
+    
+    <hr>
+    <div class="out overout" id="overout">
+      <span id="overSp">move your mouse</span>
+      <div class="in over"></div>
+    </div>
+    <div class="out enterleave" id="enterleave">
+      <span id="enterSp">move your mouse</span>
+      <div class="in enter"></div>
+    </div>
+    <script>
+      let btn=document.getElementById('btn');
+      
+      btn.addEventListener('dblclick',function(){
+          console.log('double click');
+      })
+      btn.addEventListener('contextmenu',function(){
+        console.log('right click');
+      })
+      // 
+      btn.addEventListener('mouseup',function(){
+        console.log('mouse up');
+      })
+      btn.addEventListener('mousedown',function(){
+        console.log('mouse down');
+      })
+
+      // 
+          
+            let count_overout=0;
+            let divOver=document.getElementById('overout')
+            divOver.addEventListener('mouseover',function(){
+              count_overout+=1;
+              let overSp=document.getElementById('overSp');
+              overSp.innerHTML=`mouse over:${count_overout}`;
+            })
+            let count_enterleave=0;
+            let divEnter=document.getElementById('enterleave');
+            divEnter.addEventListener('mouseenter',function(){
+              count_enterleave+=1;
+              let enterSp=document.getElementById('enterSp');
+              enterSp.innerHTML=`mouse enter:${count_enterleave}`;
+            })
+            let count_leave=0;
+    </script>
+  </body>
+</html>

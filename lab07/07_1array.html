@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array</title>
+</head>
+<body>
+    <script>
+        /* 
+            array
+        */
+        let arr=new Array();
+        // 使用typeof檢查陣列時會返回object
+        // console.log(typeof arr); 
+        arr[0]=10;
+        arr[1]=11;
+        // 小技巧 陣列會最後一個增加
+        arr[arr.length]=12;
+        // arr[10]=110;
+        // console.log(arr[0])
+        // console.log(arr[1])
+        // console.log(arr[2]) //undefined
+        /* 
+            length 會讀取陣列長度
+            對於連續陣列 length會取得陣列長度
+            對於非連續陣列 length會取出最大索引值+1
+                不建議這樣操作
+
+            修改length
+                如果修改length>原陣列 多出空的
+                如果修改length<原陣列 多出的會被刪除
+        */
+    //    console.log(arr.length);
+        // 第二種創建方式
+        let arr2=[1,2,3,4,5];
+        let arr3=new Array(1,2,3);
+        // 陣列裡的值可以是任意資料型別
+        let arr4=['hello',null,true,undefined];
+        // console.log(arr4.length)
+        // 也可以是物件
+        let obj={name:'Gary'};
+        arr4[arr4.length]=obj;
+        // 也可以是函數
+        arr4[arr4.length]=function(){
+            console.log('我是arr4函數')
+        }
+        // 也可以在放陣列 
+        // 二維陣列
+        arr4[arr4.length]=[1,2,3]
+        // console.log(arr4)
+        // console.log(arr4.length)
+        // console.log(arr4[4].name);
+        // console.log(arr4[5]());
+        // console.log(arr4[6]);
+        /* 
+            陣列方法
+                push()
+                    該方法可以在陣列尾端新增元素
+                    *改變原陣列內容 破壞性方法
+                pop()
+                    該方法可以刪除在陣列最後一個元素
+                    *改變原陣列內容 破壞性方法
+                unshift()
+                    該方法可以在陣列開頭新增元素
+                    *改變原陣列內容 破壞性方法
+                shift()
+                    該方法可以在陣列刪除開頭元素
+                    *改變原陣列內容 破壞性方法
+        */
+        let arr5=['f301','f302','f303'];
+        // arr5.push('f304','f305');
+        // arr5.pop();
+        // arr5.unshift('toilet','f300')
+        // arr5.shift()
+        // console.log(arr5)
+        /* 
+            indexOf 從前端搜尋第一個符合元素 沒有回傳-1
+            lastIndexOf 從前端搜尋第一個符合元素 沒有回傳-1
+        */
+        // console.log(arr5);
+        // console.log(arr5.indexOf('f301'))
+        // console.log(arr5.indexOf('f304'))
+        // console.log(arr5.lastIndexOf('f301'))
+
+       let carArr=['toyota','bmw','benz','mazda'];
+       /* 
+            slice()
+                從陣列選取返回選定元素
+                該方法不會改變原陣列 而是將擷取元素 返回新陣列
+                1.參數 擷取開始位置 包含開始
+                2.參數 擷取結束位置 "不"包含結束
+                    可省略不寫 會擷取從開始到後所有
+                    可以傳遞負值 則從後往前算
+       */
+    //   let new_carArr=carArr.slice(1);
+      let new_carArr=carArr.slice(0,2);
+        // let new_carArr=carArr.slice(1,-1); //不要用
+        console.log(new_carArr);
+        /* 
+            splice()
+                可以用於刪除指定元素
+                *此方法會影響原陣列 將指定元素刪除
+                    並返回刪除元素返回
+                1.表示開始索引
+                2.表示刪除數量
+                3.以後可以傳遞新元素
+        */
+       let result=carArr.splice(1,3);
+    //    let result=carArr.splice(1,0);
+    //    let result=carArr.splice(1,4,car1);
+       console.log(carArr);
+       console.log(result);
+       /* 
+            練習 去除陣列重複數字
+       */
+       let arr6=[1,2,3,4,5,9,1,1,2,3,6,7,8,9,2];
+        // 遍歷每一個元素
+        for(let i=0;i<arr6.length;i++){
+            // console.log(arr6[i]);
+            // 獲得當前元素後所有元素
+            for(let j=i+1;j<arr6.length;j++){
+                // console.log('>>>>>'+j)
+                // 判斷是否相等
+                // console.log('outer'+j)
+                if(arr6[i]==arr6[j]){
+                    // 如果想等就刪除元素
+                    arr6.splice(j,1);
+                    // 此時將不會在比較這個元素 我們需要在比較一次位置元素
+                    j--; 
+                    // console.log('inter'+j)
+                }
+            }
+        }    
+        // console.log(arr6)
+        // 有bug 後面又重複 
+        /* 
+            concat()
+                可以連接兩個或多個陣列
+                這方法不會對原陣列影響
+        */
+            // let arrConcat=arr4.concat(arr5);
+            let arrConcat=arr4.concat(arr5,'concat1','concat2');
+            // console.log(arrConcat);
+        /* 
+            join()
+                此方法可以將陣列轉為字串
+                這方法不會對原陣列影響
+                join(參數)可以指定字串作為參數連接
+                    預設為,
+        */
+            let arrJoin=arr5.join('@');
+            // console.log(arrJoin);
+        /* 
+            reverse()
+                反轉陣列順序
+                此方法“會”改變原陣列
+        */
+            arr5.reverse();
+            // console.log(arr5);
+        /* 
+            sort()
+                此方法會排序陣列
+                此方法“會”改變原陣列
+                    會以unicode編碼排序
+                可以在sort()加入一個回呼函數 來指定排序規則
+                    定義兩個參數
+                    如果返回一個大於0 交換位置
+                    如果返回一個小於0 不變
+                    如果返回一個等於0 不變
+                
+        */
+            arr5.sort();
+            // console.log(arr5);
+        // let arrSort=[3,4,5,2,1];
+        // 可能會得到 不是心中所想的排序 
+        let arrSort=[3,4,5,2,1,11];
+        // arrSort.sort();
+        arrSort.sort(function(a,b){
+            // console.log('a='+a);
+            // console.log('b='+b);
+            // if(a>b){
+            //     return -1;
+            // }else if (a<b){
+            //     return 1;
+            // }else{
+            //     return 0;
+            // }
+            // 遞增
+            return a-b;
+            // 遞減
+            // return b-a;
+        });
+        // console.log(arrSort);
+
+        // let arrTest=[3,2]
+        // ？？？？
+        // let arrTest=[6,5]
+        // arrTest.sort(function(b,a){
+        //     console.log('a='+a);
+        //     console.log('b='+b);
+        //     return 1;
+        // })
+        // console.log(arrTest);
+         /* 
+            陣列 遍歷 
+                將陣列所有元素取出來
+        */
+        for(let i=0;i<arr5.length;i++){
+            // console.log(arr5[i]);
+        }
+
+        function Car(brand,price){
+            this.brand=brand;
+            this.price=price;
+        }
+        Car.prototype.toString=function(){
+            return `Car[name=${this.brand},price=${this.brand}]`;
+        }
+        let car1=new Car('toyota1',1000);
+        let car2=new Car('toyota2',2000);
+        let car3=new Car('toyota3',3000);
+        let car4=new Car('toyota4',4000);
+        let car5=new Car('toyota5',5000);
+        // 將這些物件到陣列中
+        // let carArr=[car1,car2,car3,car4,car5];
+        /* 
+            創建一個函數 可以將carArr中超過3000 的car取出來
+                然後產生新的陣列中返回
+        */
+       function getGoodCar(arr){
+           let newArr=[];
+            // 遍歷陣列元素
+            for(let i=0;i<carArr.length;i++){
+                // 找出大於3000的
+                if(carArr[i].price>3000){
+                    // 添加到新的陣列 
+                    newArr.push(carArr[i]);
+                }
+            }
+            return newArr;
+       }
+    //    console.log(getGoodCar());
+       /* 
+            一般來說我們都是用for迴圈
+            forEach()
+                -IE8以上
+            需要一個函數作為參數
+                這種函數由我們創建但不是我們使用 回乎函數
+                陣列有幾個元素 函數就會執行幾次 每次執行都會遍歷元素
+                將參數形式傳遞進來
+                1參數 元素
+                2參數 索引
+                3參數 陣列
+       */
+    //    carArr.forEach(function(e){
+       carArr.forEach(function(ele,index,obj){
+        //    console.log('hello')
+        // console.log('element='+ele);
+        // console.log('index='+index);
+        // console.log('obj='+obj);
+       });
+    </script>
+</body>
+</html>

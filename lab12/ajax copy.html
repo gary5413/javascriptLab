@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn">AJAX</button>
+    <ul id="list">
+      
+    </ul>
+    <script>
+      /* 
+        非同步處理時在以前 會以巢狀方式回乎
+        new Promise();
+          參數  
+            resolve:
+            reject:
+          方法用來定義非同步行為完成後的動作
+            then()
+
+      */
+      let order = false;
+      // let order = true;
+      
+      let orderP = new Promise(function (resovle, reject) {
+        if (order) {
+          // console.log('訂單已確認')
+          resovle("from resolve():訂單已確認");
+        } else {
+          // console.log('訂單取消')
+          reject("from reject():訂單取消"); // 如果沒有抓取會報錯
+        }
+      });
+      orderP.then(function (message) {
+        console.log(`${message}`);
+        // console.log('promise resolved')
+      }).catch(function (message) {
+        //抓取reject
+        console.log(`${message}`);
+        // console.log('promise reject ')
+      });
+
+      /* 
+        fetch()
+        fetch('url')
+        fetch(url, {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: new Headers({
+          "Content-Type": "application/json",
+        }),
+      })
+        .then((res) => res.json())
+        .catch((error) => console.error("Error:", error))
+        .then((response) => console.log("Success:", response));
+      */
+      
+      let url =
+        "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-BB672851-5F02-497F-84B1-F76358D9D28E";
+      
+        // let f = fetch(url);
+        let btn=document.getElementById('btn');
+        btn.addEventListener('click',function(){
+          fetch(url).then(function (data) {
+          // console.log(data);
+          // 會回傳一個json格式資料 然後繼續由下一個then來接
+          return data.json();
+          }).then(function (jsonData) {
+            console.log(jsonData.records.location);
+            let ul=document.getElementById('list')
+            for(let city of jsonData.records.location){
+              let li1=document.createElement('li')
+              let li2=document.createElement('li')
+              let li3=document.createElement('li')
+              console.log(city.locationName);
+              console.log(city.weatherElement[0].time[0].startTime)
+              console.log(city.weatherElement[0].time[0].parameter.parameterName)
+              li1.innerHTML=city.locationName;
+              li2.innerHTML=city.weatherElement[0].time[0].startTime;
+              li3.innerHTML=city.weatherElement[0].time[0].parameter.parameterName;
+              ul.appendChild(li1);
+              ul.appendChild(li2);
+              ul.appendChild(li3);
+            }
+          });
+        })
+       
+      /* 
+      function promise(){
+          //  隨機產生1~0之間的亂數 如果大於0.5 回傳1 反之 0 
+        let num=(Math.random() > 0.5) ? 1 :0;
+        if(num){
+          resolve('成功'); 
+        }
+        reject('失敗')
+      } */
+
+      /*    var promise = new Promise(function (resolve, reject) {
+        resolve(1);
+      });
+      promise
+        .then(function (value) {
+          console.log(value);
+          return value + 1;
+        })
+        .then(function (value) {
+          console.log(value);
+          return value + 2;
+        })
+        .then(function (value) {
+          console.log(value);
+        }); */
+    </script>
+  </body>
+</html>

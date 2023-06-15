@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>date</title>
+</head>
+<body>
+    <script>
+        /* 
+            Date物件
+
+        */
+        // 當前時間
+        let now=new Date();
+        console.log(now); //Tue Jun 06 2023 12:41:17 GMT+0800 (台北標準時間)
+        
+        // 指定時間
+        // let time=new Date('2023/10/10');
+        let time=new Date('2023/12/31 23:59:01');
+        console.log(time)
+        // 幾號
+        let date=time.getDate();
+        console.log(date)
+        // 星期幾
+        let day=time.getDay();
+        console.log(day);
+        let month=time.getMonth();
+        // 幾月 0~11 代表1到12月 
+        console.log(month);
+        // 幾年
+        let year=time.getFullYear();
+        console.log(year);
+
+        // 時間戳 從19700101 0:0:0 ~到現在所花費的毫秒 1秒1000毫秒
+        let timestamp=now.getTime()
+        console.log(timestamp); //
+        // let greenwich=new Date('1970/1/1 0:0:0'); //台灣時間
+        // let greenwich=new Date('1970/1/1 0:0:0'); //台灣時間
+        // let greenwichTimestamp=greenwich.getTime();
+        // console.log(greenwichTimestamp);
+
+        function getTwYear(date){
+            // console.log(date)
+            let twYear=date.getFullYear()-1911
+            // console.log(twYear)
+            return `西元${date.getFullYear()}年對應為民國${twYear}年`
+        }   
+        let result=getTwYear(time);
+        console.log(result);
+
+
+        /* 
+            console.time('參數')
+            console.timeEnd('參數')
+        */
+
+        console.time();
+        Math.pow(2, 10);
+        // 計算 2 的 10 次方
+        console.timeEnd();
+        // 若 console.time 和 console.timeEnd 沒有給參數，則會用 'default' 來表示時間戳記
+        // default: 0.005ms
+
+        console.time('2 的 10 次方花費的時間');
+        Math.pow(2, 10);
+        console.timeEnd('2 的 10 次方花費的時間');
+        // 若 console.time 和 console.timeEnd 有給參數，則用該參數來表示時間戳記
+        // 2 的 10 次方花費的時間: 0.004ms
+    </script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lab</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>string number boolean</h1>
+    </header>
+    <script>
+      /*
+        注意 單 雙要搭配
+        \ 跳脫字符
+        \n 換行
+        + 連接符號
+        */
+      let str = "hello";
+      console.log(str);
+      let str1 = '123"456"';
+      console.log(str1);
+      let str2 = "He's Hero!!";
+      console.log(str2);
+      let str3 = "java\nscript";
+      console.log(str3);
+      str = "javascript";
+      console.log(str);
+      /* 
+         JS中的數值都是Number類型
+            整數和浮點數
+      */
+      let a = 123;
+      console.log(a);
+      a = 123.456;
+      // NaN Not a Number
+      var d = "abc" * "bcd";
+      // Number.Max_VALUE 1.7976931348623157e+308
+      console.log(Number.MAX_VALUE);
+      // 如果使用Number超過最大值 則返回Infinity 有正負
+      var c = Number.MAX_VALUE * Number.MAX_VALUE;
+      // Number.Min_VALUE 0.000~小數點後300 大於0最小值  5e-324
+      var e = Number.MIN_VALUE;
+      // 整數運算基本保證正確
+      var f = 123 + 456;
+      console.log(f);
+      var g = 0.2 * 3;
+      console.log(0.2 * 3 == 0.6); //false
+      console.log(g);
+      // 浮點數可能會一個不精確的結果
+      // js 內以2進制計算所造成的誤差
+      /*
+            16 0x~
+            8 0o~
+            2 0b~
+        */
+      var a16 = 0x10;
+      a16 = 0xff;
+      console.log(a16);
+      var a8 = 0o10;
+      console.log(a8);
+      var a2 = 0b10;
+      console.log(a2);
+      /*
+            Boolean 
+            true  
+            false  
+
+            Null
+            null表示為空物件
+                資料型態object
+
+            Undefined 表示一個值就叫Undefiend
+                宣告變數 但未指派
+        */
+      let bool = true;
+      console.log(bool);
+      console.log(typeof bool);
+
+      let aa = null;
+      console.log(typeof null);
+      let bb;
+      console.log(bb);
+      console.log(typeof bb);
+      // 轉換成boolean
+      /*
+            使用Boolean()
+                數字 字串 object
+                    除了 0和NaN  undefined "" > false
+                    其他都是true
+                
+        */
+
+      // var bool3 = 123;
+      // bool3 = -123;
+      // bool3=Infinity; //不演式
+      // bool3 = 0; //false
+      // bool3 = NaN; //false
+
+      // bool3 = ""; //false
+      // bool3 = "   "; // true
+
+      // bool3 = null; //false
+
+      bool3 = undefined; //false
+
+      bool3 = Boolean(bool3);
+      console.log(typeof bool3);
+      console.log(bool3);
+    </script>
+  </body>
+</html>

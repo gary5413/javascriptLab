@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lab</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>star score</h1>
+    </header>
+    <div id="homework3">
+      <h3>homework3</h3>
+      <img class='star' src="./sample/img/star.gif" alt="" />
+      <img class='star' src="./sample/img/star.gif" alt="" />
+      <img class='star' src="./sample/img/star.gif" alt="" />
+      <img class='star' src="./sample/img/star.gif" alt="" />
+      <img class='star' src="./sample/img/star.gif" alt="" />
+      <br />
+      <h2 id="nowStar">目前有0顆星</h3>
+      <button id="resetBtn">reset</button>
+    </div>
+    <script>
+      window.onload=function(){
+      // homework3
+      /* 
+        1.滑鼠移入星星變色
+        2.依照長度變色
+      */
+      let nowStar=document.getElementById('nowStar')
+      let stars=document.querySelectorAll('.star')
+      let flag=true; //設一個開關
+      // console.log(stars)
+      let indexStar=0;
+      for(let i=0;i<stars.length;i++){
+        // 設定num屬性
+        stars[i].num=i;
+        // 滑鼠移入
+        stars[i].addEventListener('mouseover',function(){
+          //重置星星          
+          // for(let i=0;i<stars.length;i++){
+          //   stars[i].src='./sample/img/star.gif'
+          //   // console.log('i'+i);
+          // }
+          if(flag){
+            resetStar();
+            //星星變色 
+            // stars[i].src='./sample/img/chngstar.gif'
+            // let indexStar=this.num;
+            indexStar=this.num;
+            // console.log(indexStar);
+            for(let j=0;j<=indexStar;j++){
+              // console.log('j:'+j)
+              stars[j].src='./sample/img/chngstar.gif'
+            }
+            nowStar.innerHTML=`目前有${indexStar+1}顆星`;
+          }
+        })
+
+        // 滑鼠移出
+        stars[i].addEventListener('mouseout',function(){
+          // for(let i=0;i<stars.length;i++){
+          //   stars[i].src='./sample/img/star.gif';
+          // }
+          if(flag){
+            resetStar();
+          }
+        })
+        
+        function resetStar(){
+          for(let i=0;i<stars.length;i++){
+            stars[i].src='./sample/img/star.gif';
+          }
+          nowStar.innerHTML=`目前有0顆星`;
+        }
+        // 點擊評分功能
+        stars[i].addEventListener('click',function(){
+          if(flag){
+            flag=false;
+            nowStar.innerHTML=`最後選擇${indexStar+1}顆星`;
+          }
+        })
+        let resetBtn=document.getElementById('resetBtn');
+        resetBtn.addEventListener('click',function(){
+          flag=true;
+          resetStar();
+        })  
+      }
+        
+      
+      
+      }//onload
+    </script>
+  </body>
+</html>

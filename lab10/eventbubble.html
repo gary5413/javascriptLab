@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event bubble</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+         #div1{
+            height: 100px;
+            width: 500px;
+            padding: 10;
+            border: 1px solid black;
+            background-color: lightblue;
+            
+        }
+        p{
+             background-color: lightcoral;   
+            }
+        span{
+            background-color: lightgreen;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>event bubble</h1>
+    </header>
+    <div class="container">
+        <div id="div1">
+            div element
+            <p id="p">
+                p element
+                <span id="span">span element</span>
+            </p>
+        </div>
+        <hr>
+        <a id='a' href="https://www.w3schools.com/js/">w3school</a>
+        <div id="target"></div>
+    </div>
+    <script>
+        window.onload=function(){
+            
+            let a=document.getElementById('a');
+            console.log(a);
+            let target=document.getElementById('target');
+            
+            // a.onclick=function(){
+            //     event.preventDefault();
+            //     target.innerHTML=`defalut ${event.type} prevented`;
+            // }
+            a.addEventListener('click',function(event){
+                console.log(event);
+                event.preventDefault();
+                target.innerHTML=`defalut ${event.type} prevented`;
+            })
+            
+
+            
+            // 
+            let div1=document.getElementById('div1');
+            let p=document.getElementById('p');
+            let span=document.getElementById('span');
+            /* 
+                事件泡泡
+                    事件向上傳遞時，後代元素事件被觸發
+                    大部分泡泡事件是正常
+                        但有些例外狀況是不用
+            */
+            div1.addEventListener('click',function(e){
+                // e.stopPropagation();
+                console.log('this is div element was click')
+            })
+            p.addEventListener('click',function(e){
+                e.stopPropagation();
+                console.log('this is p element was click')
+            })
+            span.addEventListener('click',function(e){
+                e.stopPropagation();
+                console.log('this is span element was click')
+            })
+
+
+
+        }
+    </script>
+</body>
+</html>

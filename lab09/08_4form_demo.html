@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lab</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>form demo</h1>
+    </header>
+    <div id="homework2">
+      <h3>homework2</h3>
+      <form action="#">
+        <fieldset class="hw2fieldset">
+          <legend>表單檢查</legend>
+          <div id="hw2d1">
+            <label for="">身分證字號：
+              <input type="text" id="twid"/>
+            </label>
+            <span id="showTwid"></span>
+            <br />
+            <!-- <span>1. 不可空白 2.至少兩個字以上 3.必須全部都是中文</span> -->
+          </div>
+          <hr />
+          <div id="hw2d2">
+            <label for="">密碼：
+              <input type="text" id="password" />
+            </label>
+            <span id="showPw"></span>
+            <br />
+            <span>
+              1. 不可空白 2.至少6個字
+              3.必須包含英文字母、數字、特殊字元[!@#$%^&*]
+            </span>
+          </div>
+          
+        </fieldset>
+      </form>
+    </div>
+    <script>
+      window.onload=function(){
+         // homework2
+      let twidInput=document.getElementById('twid');
+      let dateInput=document.getElementById('date');
+      
+      twidInput.addEventListener('blur',function(){
+        // console.log(this.value);
+        let content=this.value;
+        // let reg=/^[A-Z]{1}[1-2]{1}[0-9]{8}$/;
+        let regexId=new RegExp(/^[A-Z]{1}[1-2]{1}[0-9]{8}$/);
+        let result=regexId.test(content);
+        let showTwid=document.getElementById('showTwid');
+        if(result){
+          showTwid.innerHTML='正確'
+        }else{
+          showTwid.innerHTML='格式錯誤'
+        }
+      })
+      
+      let pwInput=document.getElementById('password');
+      pwInput.addEventListener('blur',function(){
+        let content=this.value;
+        let pwLen=this.value.length;
+        let showPw=document.getElementById('showPw');
+        if(pwLen==0){
+          showPw.innerHTML='不能留為空白';
+        }else if(pwLen<=6){
+          showPw.innerHTML='至少六個字元';
+        }else if(!/[!@#$%^&*]+/.test(content)){
+          showPw.innerHTML = '必須包含特殊字元[!@#$%^&*]';
+        }else if(!/[a-zA-Z]+/.test(content)){
+          showPw.innerHTML='必須包含英文字母';
+        }else if(!/\d+/.test(content)){
+          showPw.innerHTML='必須包含數字';
+        }else{
+          showPw.innerHTML='正確'
+        }
+      })
+      }
+    </script>
+  </body>
+</html>

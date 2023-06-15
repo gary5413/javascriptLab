@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lab</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>object</h1>
+    </header>
+    <script>
+      //
+      let obj = new Object();
+      //
+      obj.name = "Gary";
+      obj.gender = "mele";
+      obj.age = "18";
+      // 修改物件屬性
+      obj.name = "tomcruise";
+      // 刪除物件屬性
+      delete obj.name;
+      // console.log(obj.name)
+      // console.log(typeof obj)
+      // 讀取的物件沒有該屬性 返回undefined
+      // console.log(obj.hello);
+      // 物件屬性不強制 變數命名規範 但不建議
+      obj.var = "hello";
+      // console.log(obj.var);
+      // 如果要使用特殊屬性名 object["prop"]=value
+      // obj.123=456
+      obj["123"] = 456;
+      // console.log(obj["123"]);
+      /* 
+            使用[] 操作屬性更加靈活
+            在[] 可以直接傳遞一個值
+        */
+      obj["hello"] = "妳好";
+      // let n='123';
+      let n = "hello";
+      // console.log(obj[n]);
+
+      /* 
+            屬性的值可以是任意屬性
+            
+        */
+      obj.test = true;
+      obj.test = null;
+      obj.test = undefined;
+      // 創一個物件 obj2
+      let obj2 = {};
+      obj2.name = "Gary2";
+      // 將obj2 設定為obj屬性
+      obj.test = obj2;
+      console.log(obj.test);
+      console.log(obj);
+      console.log(obj.test["name"]);
+
+      /* 
+            檢查物件是否有該屬性
+            in 
+            ("屬性" in 物件)
+        */
+      // console.log("test" in obj);
+      // console.log("name1" in obj2);
+      /* 
+            基本型別資料型態
+            值跟值之間是獨立存在 修改一個變數不會影響其他值
+
+            參考型別的的資料型態
+            物件是保存內存記憶體位址 每新建一個物件就會開新的記憶體
+            如果兩個物件記憶體位址一樣
+            通過改變物件屬性值時 另一個也會受影響
+
+
+        */
+      let a = 123;
+      let b = a;
+      a++; 
+      console.log("a=" + a); //124
+      console.log("b=" + b); //123
+
+      let objA = {};
+      objA.name = "aaa";
+      let objB = objA;
+      objB.name = "bbb";
+      // 斷開地址
+      // objB=null;
+      console.log("obj.name=" + objA.name); //bbb
+      console.log("obj2.name=" + objB.name); //bbb
+
+      let objC = new Object();
+      let objD = new Object();
+      objC.name = "Gary";
+      objD.name = "Gary";
+      console.log(objC.name);
+      console.log(objD.name);
+      // 比較物件的記憶體位址
+      console.log(objC == objD); //false
+      console.log(objC.name === objD.name); //true
+
+      /* 
+        
+            
+
+        */
+      let objE = {};
+      // console.log(typeof objE);
+      let objF = {
+        name: "Gary",
+        age: 18,
+        gender: "male",
+        interests: ["game", "coding"],
+        pet: { animal: "cat", name: "lemon" },
+        greeting: function () {
+          console.log("Hi I'm " + this.name + ".");
+          return "hello";
+        },
+      };
+      // console.log(objF.name);
+      // console.log(objF.age);
+      // console.log(objF.interests[0]);
+      // console.log(objF.pet["name"]);
+      // console.log(objF.greeting());
+    </script>
+  </body>
+</html>

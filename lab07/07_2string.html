@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>string</title>
+</head>
+<body>
+    <script>
+        /* 
+            String方法
+        */
+        let str = 'hello javascript';
+        /* 在底層字串是以 單字陣列儲存 
+                            ['h','e','l','l','o']
+        */
+        // length 字串長度
+        console.log(str.length); //16
+        console.log(str[1]) //e
+
+        /* 
+            charAt() 
+                可以返回字串指定位置單字
+        */
+        console.log(str.charAt(0)) //h
+
+        /* 
+            charCodeAt()
+                獲取指定位置單字字串unicode編碼
+        */
+        console.log(str.charCodeAt(1))   //101 
+        /* 
+           String.fromCharCode()
+                可以根據字串編碼獲取
+        */ 
+        console.log(String.fromCharCode(101)) //e
+        console.log(String.fromCharCode(0x00c0)) //A
+
+        /* 
+            concat()
+                連接多個字串
+        */
+        let str2=str.concat("你好");
+        console.log(str2);
+        /* 
+            indexOf()
+                該方法檢索字串是否有指定內容
+                返回該第一次出現的索引
+                 沒找到-1
+                第二個參數 指定第幾個開始位置找
+            lastIndexOf()
+        */
+        let result=str.indexOf('l');
+        let result4=str.indexOf('z');
+        console.log(result); //2
+        console.log(result4); //-1
+        let result2=str.lastIndexOf('l');
+        console.log(result2); //3
+        /* 
+            slice()
+                可以指定字串擷取
+                1.參數 開始位置索引  包括
+                2.參數 結束位置索引  不包括
+                    省略第二個參數 後面所有
+                    -1 倒數算
+        */
+        let result3=str.slice(0,2);
+        // let result3=str.slice(0,-1);
+        console.log(result3); //he
+        /* 
+            substring()
+                擷取字串 功能和slice()一樣
+                1.參數 開始位置索引  包括
+                2.參數 結束位置索引  不包括 
+                唯一不同不能傳-1
+                自動調整參數位置
+        */
+        // let resultsubstring=str.substring(0,2);
+        // let resultsubstring=str.substring(0,-1); //不行
+        let resultsubstring=str.substring(0,1); // 自動調整
+        console.log(resultsubstring);
+        /* 
+            substr()
+                擷取字串
+                1.參數 開始位置索引 
+                2.參數 擷取長度
+                    不是ECMAScript定義 
+        */
+        let resultsubstr=str.substr(0,2);
+        console.log(resultsubstr)
+        /* 
+            split()
+                可以將字串拆成陣列
+        */
+        let str3='abc,def,ghi,jkl,';
+        let resultsplit=str3.split(',');
+        console.log(resultsplit)
+        
+        
+        /* 
+            toUpperCase()
+            toLowerCase()
+        */
+        /* 
+            includes()
+        */
+        /* 
+            trim()
+        */
+        /* 
+            split()
+                將字串拆分陣列
+                也可使用正則
+        */
+        let str4='1a2sa3d4afa5ga5A6ha6';
+        let resultSplit=str4.split(/[a-z]/);
+        console.log(resultSplit)
+
+        /* 
+            search()
+                搜索字串
+                如果有返回第一個字串索引
+                沒有返回-1
+                也可使用正則
+        */
+        let resultSearch=str.search('helloo');
+        console.log(resultSearch);
+        /* 
+            match()
+                可以根據正則 從一個字串將符合條件內容擷取
+                預設只返回第一個字串 停止搜尋
+                可以根據正則 g 全部取出 
+                取出來會封裝成陣列
+        */
+        let resultMatch=str4.match(/[a-z]/ig);
+        console.log(resultMatch);
+        /* 
+            replace()
+                將字串替換新內容
+                1.參數 替換內容
+                2.參數 新內容
+                只會替換第一個字串
+        */
+        // let resultReplace=str4.replace('a','@');
+        let resultReplace=str4.replace(/a/ig,'@');
+        console.log(resultReplace);
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>time</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>time</h1>
+    </header>
+    <div class="container">
+        <h3 id="count">1</h3>
+    </div>
+    <script>
+        /* 
+            setInterval()
+            setTimeout()
+            clearInterval()
+            claerTimeout
+        */
+       let i=2;
+       window.onload=function(){
+            let count=document.getElementById('count');
+            
+            /* 
+                setInterval()
+                    定時器
+                    可以將一個函數每隔一段時間執行一次
+                    1.參 執行函數
+                    2.參 毫秒
+                    返回值 number 定時器的變數
+            */
+            // setInterval(function(){
+            //     count.innerHTML=i++;
+            // },1000);
+            let timer1=setInterval(displayCount,1000)
+            function displayCount(){
+                count.innerHTML=i++;
+                if(i==11){
+                    clearInterval(timer1);
+                }
+            }
+            /* 
+                clearInterval()關閉定時器
+                    對應要關閉的定時器
+            */
+            // clearInterval(timer1)
+            /* 
+            依指定時間間隔重複執行
+            */
+           // setInterval(function(){
+               //     console.log(i++);
+               // },3000)
+               /* 
+               經過指定時間後 執行單次函數
+               只會執行一次
+               */
+        
+        let timer=setTimeout(function(){
+            console.log('三秒後說hello ');
+        },3000)
+        // 關閉setTimeout
+        // clearTimeout(timer);
+       }
+    </script>
+</body>
+</html>

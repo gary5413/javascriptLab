@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lab</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>form event</h1>
+    </header>
+    <input type="text" class="text" id="text"/>
+    <hr>
+    <select name="" id="select">
+      <option value="TPE">台北市</option>
+      <option value="NTP">新北市</option>
+      <option value="TYN">桃園市</option>
+    </select>
+    <div id="target"></div>
+    <hr>
+    <div>
+      <input type="checkbox" name="checkGroup" value="1" />1
+      <input type="checkbox" name="checkGroup" value="2" />2
+      <input type="checkbox" name="checkGroup" value="3" />3
+      <input type="checkbox" name="checkGroup" value="4" />4
+      <button id="btnC">送出</button>
+      <button id="btnSetC">設定2,4</button>
+    </div>
+    <hr>
+    <div>
+      <input type="radio" name="radioGroup" value="A"/>A
+      <input type="radio" name="radioGroup" value="B"/>B
+      <button id="btnR">送出</button>
+      <button id="btnSetR">設定A</button>
+    </div>
+  
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+   
+    <script>
+      window.onload=function(){
+
+        /* 
+        input select
+        */
+       let text=document.getElementById('text');
+       text.addEventListener('focus',function(){
+         console.log('focus');
+        })
+        text.addEventListener('blur',function(){
+          console.log('blur');
+        })
+        // select change
+        let select=document.getElementById('select');
+        // console.log(select);
+        select.addEventListener('change',function(){
+          console.log('123');
+          console.log(this.value)
+          let content=this.value;
+          document.getElementById('target').innerHTML=content;
+        })
+        /* 
+          取得checkbox
+        */
+        document.getElementById('btnC').addEventListener('click',function(){
+          // 用來儲存選取的陣列
+          let result=[];
+          // 回傳NodeList物件
+          let checkGroup=document.getElementsByName('checkGroup')
+          // console.log(checkGroup);
+          for(let i=0;i<checkGroup.length;i++){
+            // 逐一取出checkbox元素
+            let checkbox=checkGroup[i];
+            // console.log(checkbox);
+            if(checkbox.checked){
+              result.push(checkbox.value);
+            }
+          }
+          console.log(result)
+        })
+        
+        /* 
+          取得radio值
+        */
+        document.getElementById('btnR').addEventListener('click',function(){
+          let result=[];
+          let radioGroup=document.getElementsByName('radioGroup');
+          for(let i=0;i<radioGroup.length;i++){
+            let radio=radioGroup[i];
+            if(radio.checked){
+              result.push(radio.value)
+            }
+          }
+          console.log(result);
+        })
+       
+          /* 
+            設定checkbox值
+            因為checkbox是可以複選 所以參數值是個陣列valueArr
+            Array.indexOf 檢查陣列是否有與屬性的value相同 如不存在會回傳-1
+            所以只要判斷是否大於-1即可 
+          */
+          // 
+          let setCheckBoxValue=function(name,valueArr){
+            let checkGroup=document.getElementsByName('checkGroup');
+            // console.log(checkGroup);
+            // console.log(checkGroup.length);
+            for(let i=0;i<checkGroup.length;i++){
+              let checkbox=checkGroup[i];
+              // console.log(checkbox);
+              if(valueArr.indexOf(checkbox.value) > -1){
+                checkbox.checked=true;
+              }
+            }
+          }
+          document.getElementById('btnSetC').addEventListener('click',function(){
+            setCheckBoxValue('checkGroup',['2','4'])
+          })
+          /* 
+            設定radio值
+          */
+          let setRadioValue=function(name,value){
+            let radioGroup=document.getElementsByName('radioGroup');
+            for(let i=0;i<radioGroup.length;i++){
+              let radio=radioGroup[i];
+              if(radio.value==value){
+                radio.checked=true;
+                break;
+              }
+            }
+          }
+          document.getElementById('btnSetR').addEventListener('click',function(){
+            setRadioValue('radioGroup','A')
+          })
+      }
+      </script>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>regexp</title>
+</head>
+<body>
+    <script>
+        /* 
+            正規(正則)表達式
+            定義一些字串規則  
+            
+            let reg=new RegExp("正則表達式","匹配")
+                                        i: 忽略大小寫 
+                                        g: 是否檢查全部字串 若無設定一遇到匹配就結束
+                                        
+            test()
+                使用此方法檢查字串是否符合規則
+                符合true 不符合false
+
+            正則語法 /正則表達式/匹配模式
+        */
+        // let reg=new RegExp('a','i');
+        // let reg=new RegExp(/a/i);
+        let str='abc';
+        // let result=reg.test(str);
+        // console.log(result);
+        // 檢查 是否有a或b或c 
+        // let reg=new RegExp(/a|b|c/i);
+        // 檢查是否有字母
+        /*  
+            []內容
+            [ab] == a|b
+        */
+        // let reg=new RegExp(/[a-z]/i);
+        
+        // 檢查是否有 abc adc aec 
+        // let reg=new RegExp(/a[a-z]c/i);
+        
+        // ^ 除了
+        // let reg=new RegExp(/[^abc]/i);
+        // let result=reg.test(str);
+        // let result=reg.test('123');
+        
+        // {n} n幾次  量詞只對一個字串有效
+        // let reg=new RegExp(/a{3}/i); //aaa
+        // let result=reg.test('aaa');
+        // let reg=new RegExp(/ab{3}/i); //false //bbb
+        // let result=reg.test('abbb');
+        // let reg=new RegExp(/(ab){3}/i); //true
+        // let result=reg.test('abababc');
+        // {m,n} m-n次
+        // let reg=new RegExp(/ab{1,3}c/i); 
+        // let result=reg.test('abbbc');  //true
+        // let result=reg.test('abbbbc');  //false
+        
+        // + 至少一個 
+        // let reg=new RegExp(/ab+c/i); 
+        // let result=reg.test('abbc'); //true
+        // let result=reg.test('ac'); //true
+        // * 0或多個以上
+        // let reg=new RegExp(/ab*c/i);
+        // let result=reg.test('ac'); //true
+        // let result=reg.test('bc'); //false
+        // ? 0或1個
+        let reg=new RegExp(/ab?c/i);
+        let result=reg.test('abbc'); //false
+        // ^ 開頭
+
+        // $ 結尾
+
+        
+        // let result=reg.test('abbc');
+        console.log(result);
+        
+        
+
+        
+        // 台灣手機驗證 0912345678
+        let regexPhone = new RegExp(/^09[0-9]{8}$/)
+        let resultP=regexPhone.test('0912345678');
+        console.log('phone:'+resultP);
+        
+        // 身分證
+        let regexId=new RegExp(/^[A-Z]{1}[1-2]{1}[0-9]{8}$/);
+        let resultId=regexId.test('A123456789');
+        console.log('resultId:'+resultId);
+        // Email 驗證
+        let regexEmail = new RegExp(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)
+
+
+        
+    </script>
+</body>
+</html>

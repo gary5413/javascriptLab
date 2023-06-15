@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>scope</h1>
+    </header>
+    <div class="container"></div>
+    <script>
+        /*
+        變數在程式中可被參考使用的有效範圍
+
+        原則：
+        函數外宣告 全域變數
+        函數內宣告 區域變數
+        有例外
+
+        不同作用範圍的變數即便同名 也會視為不一樣變數
+        */
+    //    ex1
+    //    var scope='全域';
+    //    function getValue(){
+    //     var scope='區域';
+    //     return scope;
+    //    }
+    //    console.log(getValue()); //區域
+    //    console.log(scope); //全域
+
+
+    //  ex2
+    /*
+    原因 未使用var宣告 會被視為全域變數
+    在getValue function 執行時
+    被新宣告的scope覆蓋
+    以變數在函數內外來判斷 不全完正確
+    以var宣告變數的函數 其定義位置決定變數範圍
+    一定要var宣告 區域變數 
+    不論區域還是全域 都要宣告 已避免混亂 錯誤
+    */
+    //     scope='全域'; //移除var
+    //     function getValue(){
+    //         scope='區域'; //移除var
+    //         return scope;
+    //     }
+    //    console.log(getValue()); //區域 
+    //    console.log(scope); //區域
+ 
+
+    // ex3 
+    /*
+    出現undefined 
+    原因 函數執行時 區域變數已宣告 但尚未指派
+    所以會出現undefined 這狀況稱為 hoisting 提升
+    函數開始時先宣告指派
+    */
+    // var scope='全域'; 
+    // function getValue(){
+    //     console.log(scope) //undefined
+    //     var scope='區域'; 
+    //     return scope;
+    // }
+    // console.log(getValue()); //區域
+    // console.log(scope); //全域
+
+    // ex4
+    /*
+    函數內使用的參數 (接收傳入值的函數變數)
+    針對該變數操作不會影響 全域變數
+    */
+    // var value=10;
+    // function decrementValue(value){
+    //     value--;
+    //     return value;
+    // }
+    // console.log(decrementValue(100)); //99
+    // console.log(value); //10
+    
+    // ex5
+    /*
+    參數是參考型別的話 不一樣
+    參考型別的儲存是值在該記憶體位置 不是值本身
+    參數傳遞時 不是傳遞實際的值 而是該位置
+
+    1. 定義全域變數value
+    2. 函數 參數宣告區域變數不同的變數
+    3. 當把value值給參數value後 參考到相同記憶體位置
+    因此 函數執行陣列方法後 會影響全域變數
+    */
+    // var value=[1,2,3,4,5];
+    // function deleteElement(value){
+    //     value.pop(); //刪除尾端元素
+    //     return value;
+    // }
+    // console.log(deleteElement(value)); //1234
+    // console.log(value); //1234
+
+    // java寫法 
+    // if(true){
+    //     int i=5;
+    // }
+    // System.outprintln(i);
+    
+    // javascript 不存在區塊層級 離開區塊變數後仍有效
+    // 超違和
+    if(true){
+        var i=5;
+    }
+    console.log(i);
+    
+    (function(){
+        var j=5;
+        console.log(j);
+    })();
+    // console.log(j); // is not defined
+
+    // let 
+    // let宣告變數 區塊外無效
+    if(true){
+        let i=5;
+    }
+    // console.log(i); // is not defined
+
+    // 注意switch let宣告
+    /* switch指令將整個條件分歧區塊視為單一區塊
+        case是標籤語法 不是區塊
+    */
+    switch(i){
+        case 0:
+            let value='x:0';
+        case 1:
+            // let value='x:1'; // 變數名稱重複
+    }
+
+    /*
+        函數常值和 Function建構子範圍差異
+        結果函數常值區域
+        Function建構子 全域！
+        
+    */
+    var scope='全域';
+    function checkScope(){
+        var scope="區域";
+
+        var f_lit=function(){
+            return scope;
+        }
+        console.log(f_lit());
+
+        var f_con=new Function('return scope;');
+        console.log(f_con());
+    }
+    checkScope();
+
+    </script>
+</body>
+</html>

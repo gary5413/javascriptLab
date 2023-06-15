@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            1. 全域
+                - 直接寫在script 都是寫在javascript
+                - 頁面打開時創建 關閉時銷毀
+                - 在全域作用範圍是一個window物件我們可以直接使用
+                - 在全域作用範圍都會作為window物件 屬性儲存
+
+            2. 區域 (函數)
+
+
+
+        */
+        // var a=10;
+        let b=10;
+        // console.log(window.a); // 10
+        // console.log(window.b); // undefined
+
+        // window.fun(); 
+        /* 
+        函數提前宣告
+            使用函數宣告使用function 創建
+            他會在這之前被創建
+
+            使用函數表達式都不會被創建
+        */
+        //console.log(fun2) //undefined
+        // fun2(); //報錯
+        function fun(){
+            console.log('fun函數')
+        }
+        var fun2=function(){
+            console.log('fun2函數')
+        }
+        var a=10;
+        // 區域範圍
+        // 裡面讀取的到外面 外面讀取不到裡面
+        // 區域變數往外找
+        function fun3(){
+            var c=20;
+            var a='區域的a'
+            console.log('a='+a); //'區域的a'
+            function fun4(){
+                console.log('a='+window.a); //var>10 let>undefined
+            }
+            fun4();
+        }
+        fun3();
+        // console.log('c='+c); //讀取不到
+        console.log('a='+a) // 10
+
+        // 函數中不使用var宣告 都會是全域作用範圍
+        var d=30;
+        function fun5(){
+            console.log('d='+d);
+            d=3;
+        }
+        fun5(); 
+        console.log('d='+d); //3
+
+        // 定義參數 就等於區域作用範圍 宣告變數
+        var e=23;
+        function fun6(e){
+            console.log(e);
+        }
+        fun6(10); //10
+    </script>
+</body>
+</html>

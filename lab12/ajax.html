@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /* 
+        非同步處理時在以前 會以巢狀方式回乎
+        new Promise();
+          參數  
+            resolve:
+            reject:
+          方法
+            then()
+      */
+      let sentToAirport = false;
+      // let sentToAirport=true;
+      let p = new Promise(function (resovle, reject) {
+        if (sentToAirport) {
+          // console.log('sent to airport')
+          resovle("from resolve():send to airport");
+        } else {
+          // console.log('cannot send to airport')
+          reject("from reject():order cancelled"); // 如果沒有抓取會報錯
+        }
+      });
+      p.then(function (message) {
+        console.log(`${message}`);
+        // console.log('promise resolved')
+      }).catch(function (message) {
+        //抓取reject
+        console.log(`${message}`);
+        // console.log('promise reject ')
+      });
+
+      /* 
+        fetch()
+        fetch('url')
+        fetch(url, {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: new Headers({
+          "Content-Type": "application/json",
+        }),
+      })
+        .then((res) => res.json())
+        .catch((error) => console.error("Error:", error))
+        .then((response) => console.log("Success:", response));
+      */
+      
+      let url =
+        "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-BB672851-5F02-497F-84B1-F76358D9D28E";
+      let f = fetch(url);
+      f.then(function (data) {
+        // console.log(data);
+        // 會回傳一個json格式資料 然後繼續由下一個then來接
+        return data.json();
+      }).then(function (jsonData) {
+        console.log(jsonData);
+      });
+      /* 
+      function promise(){
+          //  隨機產生1~0之間的亂數 如果大於0.5 回傳1 反之 0 
+        let num=(Math.random() > 0.5) ? 1 :0;
+        if(num){
+          resolve('成功'); 
+        }
+        reject('失敗')
+      } */
+
+      /*    var promise = new Promise(function (resolve, reject) {
+        resolve(1);
+      });
+      promise
+        .then(function (value) {
+          console.log(value);
+          return value + 1;
+        })
+        .then(function (value) {
+          console.log(value);
+          return value + 2;
+        })
+        .then(function (value) {
+          console.log(value);
+        }); */
+    </script>
+  </body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lab</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>operater1</h1>
+    </header>
+    <script>
+      /* 
+            運算子
+            任何值 加NaN 都會變NaN
+            任何值加字串 都會轉成字串
+        */
+      var a = 123;
+      // var result = typeof a;
+      // result = 1 + 2 + "3"; //33
+      // result = "1" + 2 + 3; //123
+      // result = 2 + NaN; // NaN
+      // result = "123" + "456"; // 如果是字串 連接符號
+      result = 123 + "aaa";
+      // result = true + "aaa";
+      // 數字+空字串 轉乘字串 後續可補充在
+      // console.log(result);
+      var b = 123;
+      b = b + "";
+      // console.log(typeof b);
+      // -
+      result = 100 - 5;
+      result = 100 - true; //true 1
+      result = 100 - "5"; // 轉成95 其他會轉成number
+      result = 100 - "a"; //NaN
+      // console.log(result);
+      // *
+      result = 2 * "2";
+      console.log(result);
+      result = 2 * undefined; //NaN
+      result = 2 * null; //0
+
+      // /除法
+      result = 4 / 3;
+      result = 4 / 0; // Infinity
+
+      // % 取餘數
+      result = 9 % 4;
+      // console.log(result);
+      // 轉乘數字 不建議這樣用
+      var c = "99";
+      // c=c-1;
+      c = c - 0;
+      // console.log(typeof c);
+      // console.log(c);
+      /* 
+        一元運算式
+        + 正號
+            正號 不會對數字有任何影響
+        - 負號
+            - 負號可以對數字進行取反    
+                非number會轉回number在運算
+                可以對一個其他類型使用+轉換number
+
+        */
+      var a = 123;
+      //    a=+a;
+      //    a=-a;
+      //    a=true;
+      a = 18;
+      // a=-a;
+      a = +a;
+      // console.log("a=" + a);
+      // console.log(typeof a);
+
+      //    var result=1+'2'+3; //123
+      var result = 1 + +"2" + 3; //6
+      // console.log(result);
+      /* 
+        遞增
+            通過自己增加可以使變數在自身基礎上增加1
+                分兩種 後++ a++ or 前++ ++a
+                都會立即使原變數加1
+                不同的是a++ 和 ++a的值不同
+                a++的值等於原變數的值 自增前的值
+                ++a的值等於原變數的新值 自增後的值
+        遞減
+       */
+      var b = 1;
+        // b=b+1;
+      // b++;
+      // ++b;
+      // console.log('b++ ='+ b++); //1 a++的值等於原變數的值 自增前的值
+      // console.log("++b =" + ++b); //2
+      console.log(b);
+
+      var c = 10;
+      c++;
+      // console.log(c++); //11
+      ++c;
+      // console.log(++c); //14
+
+      var d = 20;
+      var result = d++ + ++d + d; //20 + 22 + 22 //64
+      // console.log(result);
+
+      var e = 20;
+      e = e++;
+      /* 
+    var f=e++
+        e=f
+    */
+      // console.log(e);
+
+      var num = 10;
+      // num--;
+      // --num;
+      // console.log("num=" + num);
+      // console.log(num--);
+      // console.log(--num);
+
+      var n1 = 10,
+        n2 = 20;
+      var n = n1++; // n1 =11 ,n1++=10
+      // console.log("n=" + n);
+      // console.log("n1=" + n1);
+
+      n = ++n1; // n1 =12 ,++n1=12
+      // console.log("n=" + n);
+      // console.log("n1=" + n1);
+
+      n = n2--; // n2 =19, n2-- =20
+      // console.log("n=" + n);
+      // console.log("n2=" + n2);
+
+      n = --n2; // n2=18, --n2=18;
+      // console.log("n=" + n);
+      // console.log("n2=" + n2);
+    </script>
+  </body>
+</html>

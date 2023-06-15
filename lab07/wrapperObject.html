@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wrapper</title>
+</head>
+<body>
+    <script>
+        /* 
+            基本資料型別
+            string number boolean null undefined
+            參考型別
+            object
+
+            包覆類別
+            wrapper Object
+                String() 
+                Number() 
+                Boolean()
+            
+            
+        */
+        // let num=3;
+        let num =new Number(3);
+        let num2 =new Number(3);
+        let str=new String('hello');
+        // let bool=new Boolean(true);
+        let bool=new Boolean(false);
+
+        // 可以添加屬性
+        num.hello='abc';
+        console.log(num.hello)
+        console.log(typeof num);
+        // 有古怪1
+        console.log(num == num2);
+        // 有古怪2
+        if(bool){
+            console.log('我是true')
+        }
+
+        
+        /*  為什麼還要用wrapper object
+            當我們對一些基本資料型別調用屬性和方法時
+                會臨時包轉成包裝類別物件再調用屬性和方法
+        */
+        let num3=123;
+        let str2=num3.toString();
+        console.log(str2);
+
+        // 此時53行臨時轉成包覆物件 就銷毀 
+        str2.hello='hello';
+        // 此時55又會在轉成包覆物件2 裡面就不會有該屬性
+        console.log(str2.hello); //undefiend
+    </script>
+</body>
+</html>

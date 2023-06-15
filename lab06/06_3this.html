@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        瀏覽器使用函數每次都向函數傳遞一個隱含參數
+            這個隱藏參數就是this this指的像是一個物件
+            這個物件是稱為函數執行的上下文物件
+            1. 以函數使用時 this是windows物件
+            2. 以物件方法使用時 this是使用方法的物件
+            3. 當以建構子建立 this 新創立物件
+
+        */
+        function fun(){
+            console.log(this)
+            // console.log('a='+a,'b='+b);
+            // console.log(name)
+            // console.log(obj.name)
+            // console.log(obj2.name)
+            // console.log(this.name)
+        }
+        // fun(123,456);
+
+        var obj={
+            name:'Gary',
+            sayName:fun
+        };
+        var obj2={
+            name:'Gary2',
+            sayName:fun
+        };
+        // console.log(obj.sayName == fun);
+        var name='全域的name'
+        obj.sayName();
+        obj2.sayName();
+        fun();
+
+    </script>
+</body>
+</html>

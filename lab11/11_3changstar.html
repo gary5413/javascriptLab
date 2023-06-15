@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lab</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>star score</h1>
+    </header>
+    <div id="homework3">
+      <h3>homework3</h3>
+      <img class='star'id='star0' src="./sample/img/star.gif" alt="" />
+      <img class='star'id='star1' src="./sample/img/star.gif" alt="" />
+      <img class='star'id='star2' src="./sample/img/star.gif" alt="" />
+      <img class='star'id='star3' src="./sample/img/star.gif" alt="" />
+      <img class='star'id='star4' src="./sample/img/star.gif" alt="" />
+      <br />
+      <h2 id="hw3h2">目前有0顆星</h3>
+      <button id="resetBtn">reset</button>
+    </div>
+    <script>
+         window.onload=function(){
+             // homework3
+         let hw3h2=document.getElementById('hw3h2')
+         let stars=document.getElementsByClassName('star')
+         // console.log(stars)
+         let index_star=0;
+         let flag=true;
+         for(let i=0;i<stars.length;i++){
+           // console.log(stars[i]);
+           stars[i].num=i;
+           // 滑鼠移入
+           stars[i].addEventListener('mouseover',function(){
+             if(flag){
+                // console.log(index_star);
+             // console.log(this.num)
+             index_star=this.num
+             // index_star=parseInt(this.num)+1;
+           //  console.log(index_star);
+           // 重置星星清空
+          //  for(let j=0;j<stars.length;j++){
+          //    document.getElementById('star'+j).src='./sample/img/star.gif';
+          //  }
+          resetStar()
+           // 選擇的星星
+           for(let j=0;j<=index_star;j++){
+             // console.log(j)
+             document.getElementById('star'+j).src='./sample/img/chngstar.gif';
+           }
+             // hw3h2.innerHTML='目前有'+starNum+'顆星';
+             hw3h2.innerHTML='目前有'+(parseInt(index_star)+1)+'顆星';
+             }
+           })
+         
+           // 滑鼠移開
+           stars[i].addEventListener('mouseout',function(){
+             if(flag){
+            //    for(let j=0;j<stars.length;j++){
+            //    document.getElementById('star'+j).src='./sample/img/star.gif';
+            //  }
+            resetStar();
+               hw3h2.innerHTML='目前有0顆星';
+             }
+           })
+         
+           // 點擊
+           stars[i].addEventListener('click',function(){
+               if(flag){
+                 flag=false;
+                 hw3h2.innerHTML='選擇有'+(parseInt(index_star)+1)+'顆星';
+             }
+           })
+           let resetBtn=document.getElementById('resetBtn');
+           resetBtn.addEventListener('click',function(){
+               flag=true;
+              //  for(let j=0;j<stars.length;j++){
+              //    document.getElementById('star'+j).src='./sample/img/star.gif';
+              //   }
+              resetStar()
+            hw3h2.innerHTML='目前有0顆星';
+           })
+         } 
+          function resetStar(){
+            for(let j=0;j<stars.length;j++){
+            document.getElementById('star'+j).src='./sample/img/star.gif';
+          }
+        }
+        }//onload
+    </script>
+  </body>
+</html>

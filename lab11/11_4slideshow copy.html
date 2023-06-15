@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lab</title>
+    <link rel="stylesheet" href="../style.css" />
+    <style>
+      /* hw4 */
+      .wrapper{
+            width: 800px;
+            height: 400px;
+            background-color: black;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .slide-imgs{
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            left: 0;
+            display: flex;
+            width: 4000px;
+
+        }
+        .slide-imgs li{
+            width: 800px;
+            height: 400px;
+        }
+        .slide-imgs li img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .pages{
+            position: absolute;
+            /* background-color: red; */
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            bottom: 10px;
+            width: 100%;    
+            justify-content: center;
+        }
+        .pages li{
+            border: 1px solid #fff;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin: 0 5px;
+        }
+        .slide-arrow{
+            position: absolute;
+            /* background-color: red; */
+            z-index: 1;
+            width: 30px;
+            height: 100%;
+            color:#fff;
+            font-size: 36px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0.6;
+        }
+        .right{
+            right:0;
+        }
+        .slide-arrow:hover{
+            opacity: 1;
+        }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1></h1>
+    </header>
+    <h3>homework4</h3>
+        <div class="wrapper">
+          <a  class="slide-arrow" id="slidePrev">L</a>
+          <a  class="slide-arrow right" id="slideNext">R</a>
+          <ul id="slideImgs" class="slide-imgs">
+            <li><img src="./imgs/view1.jpg" alt=""></li>
+            <li><img src="./imgs/view2.jpg" alt=""></li>
+            <li><img src="./imgs/view3.jpg" alt=""></li>
+            <li><img src="./imgs/view4.jpg" alt=""></li>
+            <li><img src="./imgs/view5.jpg" alt=""></li>
+          </ul>
+          <ul class="pages">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+    <script>
+      window.onload=function(){
+        // homework4
+      /*
+        1.設定畫框樣式
+        2.放第一張圖
+        3.放五張圖
+        4.設定分頁選項
+        5.第一張圖移動
+        6.N張圖移動
+        7.分頁換色
+        8.箭頭設定樣式
+        9.箭頭往後移動
+        10.箭頭往前
+        11.自動輪播
+        */
+        let pages=document.querySelectorAll('.pages li')
+        let index=0;
+        // console.log(pages);
+        let slideImgs=document.getElementById('slideImgs');
+        // console.log(slideImgs);
+        let slideMove=0;
+        pages[index].style.backgroundColor='white';
+        
+        for(let i=0;i<pages.length;i++){
+          
+           //為每一個超連接都添加 num屬性
+          pages[i].num=i;
+          pages[i].addEventListener('mouseenter',function(){
+            // console.log('123')
+            // slideImgs.style.left= -800+'px';
+            // console.log(this.num);
+            index=this.num;
+            slideMove= -800*index
+            slideImgs.style.left= slideMove+'px';
+            // pages[index].style.backgroundColor='white';
+            // for(let j=0;j<pages.length;j++){
+            // // 設定在標籤內的樣式 所以設空值就會找<style>的設定
+            //   pages[j].style.backgroundColor='';
+            //  }
+            // pages[index].style.backgroundColor='white';
+            setPages();
+          })
+        }
+        function setPages(){
+          for(let i=0;i<pages.length;i++){
+            // 設定在標籤內的樣式 所以設空值就會找<style>的設定
+            pages[i].style.backgroundColor='';
+          }
+          pages[index].style.backgroundColor='white';
+        }
+        let slideLength=pages.length;
+        // console.log(slideLength);
+        let slideNext=document.getElementById('slideNext')
+        slideNext.addEventListener('click',function(){
+          index++;
+          if(index>=slideLength){
+            index=0
+          }
+          // slideMove= -800*index
+          //   slideImgs.style.left= slideMove+'px';
+          //   // pages[index].style.backgroundColor='white';
+          //   for(let j=0;j<pages.length;j++){
+          //   // 設定在標籤內的樣式 所以設空值就會找<style>的設定
+          //     pages[j].style.backgroundColor='';
+          //    }
+          //   pages[index].style.backgroundColor='white';
+          moveImg();
+        })
+        function moveImg(){
+          slideMove= -800*index
+          slideImgs.style.left= slideMove+'px';
+          // pages[index].style.backgroundColor='white';
+          for(let j=0;j<pages.length;j++){
+            // 設定在標籤內的樣式 所以設空值就會找<style>的設定
+              pages[j].style.backgroundColor='';
+            }
+            pages[index].style.backgroundColor='white';
+          }
+          let slidePrev=document.getElementById('slidePrev')
+          slidePrev.addEventListener('click',function(){
+            index--;
+            if(index<0){
+              index=slideLength-1;
+            }
+            moveImg();
+          })
+          setInterval(autoImg,2000);
+          function autoImg(){
+            index++;
+          if(index>=slideLength){
+            index=0
+          }
+          moveImg();
+          }
+      }
+    </script>
+  </body>
+</html>

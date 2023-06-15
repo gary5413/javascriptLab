@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lab</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>keyboard event</h1>
+    </header>
+    <input type="text" id="input" placeholder="請輸入" />
+    <div id="target"></div>
+    <script>
+       /* 
+                如果讀取元素節點屬性
+                    直接使用 元素.屬性
+                        元素.id .name .value
+                    唯獨class 不行
+                    元素.className
+            */
+      let input=document.getElementById('input');
+      input.addEventListener('keyup',function(){
+        console.log(input.value)
+        // console.log(this.value)
+        // let content =this.value;
+        // let target=document.getElementById('target');
+        // target.innerHTML=content;
+      })
+      input.addEventListener('keydown',function(){
+        // console.log(this.value)
+        // let content =this.value;
+        // let target=document.getElementById('target');
+        // target.innerHTML=content;
+        if (event.ctrlKey && event.altKey) {
+            console.log("ctrl + alt");
+            target.innerHTML='ctrl + alt';
+          }
+      })
+      // ESC 方向鍵 沒辦法偵測
+      input.addEventListener('keypress',function(){
+        // console.log(this.value)
+        // let content =this.value;
+        // let target=document.getElementById('target');
+        // target.innerHTML=content;
+      })
+    </script>
+  </body>
+</html>

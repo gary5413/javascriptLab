@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>math</title>
+</head>
+<body>
+    <script>
+        /* 
+            Math()
+                不用創建物件 不是建構子物件
+                是類似工具類靜態方法直接使用
+        */
+        // 圓周率
+        // console.log(Math.PI)
+        // abs() 絕對值
+        // console.log(Math.abs(-1))
+        // ceil()無條件進位
+        console.log(Math.ceil(1.33))
+        // floor()無條件捨去
+        console.log(Math.floor(1.33))
+        // round()四捨五入
+        console.log(Math.round(1.33))
+        // random() 0~1之間的隨機數
+        console.log(Math.random())
+        
+        /* 生成0~10 */
+        console.log(Math.round(Math.random()*10))
+        /*  生成1~10 
+            生成x~y
+            Math.round(Math.random()*(y-1))+x
+        */
+        console.log(Math.round(Math.random()*9)+1)
+        
+        // max()
+        let max=Math.max(10,30,99);
+        console.log(max);
+        // min()
+        let min=Math.min(0,30,99);
+        console.log(min);
+        // pow(x,y) 指數運算
+        console.log(Math.pow(2,4))
+        // sqrt() 平方根
+        console.log(Math.sqrt(4))
+
+        
+    </script>
+</body>
+</html>

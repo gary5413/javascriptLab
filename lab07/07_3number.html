@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+            將其資料型別轉換成別的資料型別
+            轉換為String Number Boolean
+        */
+      // 其他轉換成String
+      let a = 123;
+      // let a='123';
+      // console.log(typeof a);
+      // 1. 數據型別轉換成toString()方法
+      //      該方法不會影響原值 結果返回
+      //      null 跟 Undefined不行
+      let b = a.toString();
+      // console.log(typeof a);
+      // console.log(typeof b);
+      a = a.toString();
+      // console.log(typeof a);
+
+      let c = null;
+      let d = undefined;
+
+      // 2. 使用 String()方法
+      let s = 123;
+      // console.log(typeof s);
+      s = String(s);
+      // console.log(typeof s);
+
+      // 3. xxx +''; 後續補上
+
+      // 將數字轉為Number
+      /*
+            純數字 字串直接轉為數字
+            如果字串有非數字 轉為NaN
+            空字串或空格 0
+            true 1 
+            false 0
+            null 0
+            Undefined number NaN
+        */
+      var test = "123";
+      // console.log(typeof test);
+      test = Number(test);
+      // console.log(typeof test);
+      var test1 = "123a";
+      test1 = Number(test1);
+      // console.log(typeof test1);
+      // console.log(test1);
+      let test2 = "";
+      test2 = Number(test2);
+      // console.log(test2);
+      let bool = true;
+      bool = Number(bool);
+      // console.log(bool);
+
+      // 轉換方式2
+      /*
+            讀取某屬性 但想做加減
+            -parseInt(); 將字串中有效整數取出來
+            -parseFloat(); 取小數點
+        */
+      let css = "10px";
+      console.log(css);
+      let e='123e';
+      // css=Number(css);
+      let eStr=parseInt(e);
+      console.log(eStr);
+      css = parseInt(css);
+      console.log(css);
+      let f = "123.456px";
+      f = parseFloat(f);
+      console.log(f);
+      // 對非String使用parseInt() or parseFloat()
+      // 他會先轉換成String 在操作 NaN
+      let bool2 = true;
+      bool2 = parseInt(bool2);
+      console.log(bool2);
+
+      /*
+            16 0x~
+            8 0o~
+            2 0b~
+                以前IE 會有問題
+
+        */
+      var a16 = 0x10;
+      a16 = 0xff;
+      console.log(a16);
+      var a8 = 0o10;
+      console.log(a8);
+      var a2 = 0b10;
+      console.log(a2);
+
+      var test3 = "070";
+      // 限制成8進制
+      test3 = parseInt(test3, 8);
+      console.log(test3);
+
+      // 轉換成boolean
+      /*
+            使用Boolean()
+                數字
+                    除了 0和NaN undefined其他都是true
+                
+        */
+
+      var bool3 = 123;
+      // bool3=-123;
+      // bool3=Infinity;
+      // bool3=0; //false
+      // bool3=NaN; //false
+
+      // bool3=''; //false
+      bool3 = "   "; // true
+
+      // bool3=null;
+
+      // bool3=undefined;
+
+      bool3 = Boolean(bool3);
+      console.log(typeof bool3);
+      console.log(bool3);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lab</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>while for</h1>
+    </header>
+    <script>
+      let n = 1;
+      // document.write(1+'<br>')
+      // document.write(2+'<br>')
+      while(n<10){
+          document.write(n++ +'<br>')
+      }
+      do {
+        //     // document.write(n +'<br>')
+        // 任意程序
+        document.write(123 + "<br>");
+        n++;
+        // 後置判斷 至少會執行一次
+      } while (n < 10);
+      
+      /* 
+            投資年利率8% 1000成長到10000花費多少年
+            第一年1000+1000*1.08
+            第二年1080+1080*1.08
+        */
+      let money = 1000;
+      //    money*=1.08;
+      //    money*=1.08;
+      //    money*=1.08;
+      // money=moeny*1.08
+      let ii = 0;
+      while (money < 10000) {
+        money *= 1.08;
+        ii++;
+      }
+      console.log(money);
+      console.log(ii);
+      let i = 0;
+      //    while(i<10){
+      //        console.log(i)
+      //        i++;
+      //    }
+
+      //    for(let j=0;j<10;j++){
+      //        console.log(j);
+      //    }
+
+      /* 
+    1~100奇數和
+    */
+      let sum = 0;
+      // for(let j=0;j<=100;j++){
+      //     // j%2==0 偶數 j%2!=0 奇數
+      //     if(j%2!=0){
+      //         console.log(j)
+      //         sum=sum+j;
+      //     }
+      // }
+      /* 
+    1~100 7的倍數個數及總和
+    */
+      //    let count=0;
+      //    for(let j=1;j<=100;j++){
+      //        // j%2==0 偶數 j%2!=0 奇數
+      //        if(j%7==0){
+      //            console.log(j)
+      //            sum+=j;
+      //            count++;
+      //         }
+      //     }
+      //     console.log(sum)
+      //     console.log(count)
+      /* 
+    水花仙數 自戀數:153 1634
+    1^3 + 5^3 + 3^3 =153
+    */
+      for (let i = 100; i <= 999; i++) {
+        // console.log(i)
+        // 取百位數字
+        let bai = parseInt(i / 100);
+        // console.log(bai)
+        // 取十位
+        let shi = parseInt((i - bai * 100) / 10);
+        // console.log(shi)
+        // 取個位
+        let ge = i % 10;
+        // console.log(ge)
+        // 判斷
+        if (bai * bai * bai + shi * shi * shi + ge * ge * ge == i) {
+          console.log(i);
+        }
+      }
+      /* 
+    取質數
+        質數只能被1和自己整除 1不是質數
+    */
+      let num = prompt("請輸入大於一個數");
+      // let num;
+      // 放一個狀態
+      let flag = true;
+      if (num <= 1) {
+        console.log("該值不合法");
+      } else {
+        // 判斷num是否是質數
+        // 獲取2-num 質數
+        // console.time("test");
+        for (let i = 2; i < num; i++) {
+          // console.log(i)
+          if (num % i == 0) {
+            // 如果num被i整除 num一定不是質數
+            flag = false;
+            // 一但證明i不是質數 後面再算就沒意義了
+            // 使用break;
+            break;
+          }
+        }
+        // 如果是質數
+        if (flag) {
+          console.log(num + "是質數");
+        } else {
+          console.log(num + "不是質數");
+        }
+        // console.timeEnd("test");
+      }
+      /* 
+    
+    *
+    **
+    ***
+
+    ***
+    ***
+    ***
+
+    */
+      for(let i=1;i<10;i++){
+        for(let j=1;j<10;j++){
+          console.log(`${i} * ${j} = ${i*j}`);
+        }
+      }
+      // document.write("*** <br>");
+      // document.write("*** <br>");
+      // document.write("*** <br>");
+      // document.write("<hr>");
+
+      // 圖形高度
+      for (let i = 1; i < 5; i++) {
+        // 圖型寬度
+        for (let j = 0; j < i; j++) {
+          // document.write("*&nbsp");
+        }
+        document.write("<br>");
+      }
+      document.write("<hr>");
+
+      /*
+       *    1 j1 i=1 i+0 空格1
+       ***   2 j3 i=2 i+1   2
+       *****  3 j5 i=3 i+2   3
+       ******* 4 j7 i=4 i+3   4
+       */
+      //    圖型高度
+      for (let i = 1; i < 5; i++) {
+        // 空格
+        for (let j = 1; j < i; j++) {
+          // document.write("&nbsp");
+        }
+        // *
+
+        document.write("<br>");
+      }
+
+      /* 
+    不能在if 用break continue使用
+    */
+
+      /* 
+    label語句
+    使用break語句時，可以break
+    */
+      outer: for (let i = 0; i < 5; i++) {
+        console.log("@外層" + i);
+        for (let j = 0; j < 5; j++) {
+          if (j > 2) {
+            break outer;
+          }
+          console.log("@內層" + j);
+        }
+      }
+      // for of
+      const cars = ["BMW", "Volvo", "Mini"];
+
+      let text = "";
+      for (let x of cars) {
+        console.log(x)
+      text += x;
+      }
+    </script>
+  </body>
+</html>

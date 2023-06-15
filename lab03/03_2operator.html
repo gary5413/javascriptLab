@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lab</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>operater2</h1>
+    </header>
+    <script>
+      /* 
+            邏輯運算子
+            ! NOT
+                如果兩次NOT 兩次不會變化
+                如果非boolean值 NOT 他會變成boolean值 變成false
+                對任意值取兩次!! 改為boolean值 為true
+                雷同跟Boolean()函數一樣
+            && AND
+                    js中的AND 短路電路相同
+                    第一個為false就不會檢查第二個
+
+            || OR
+                    第一個為true就不會檢查第二個
+                
+
+        && || 非boolean值情況
+            &&
+                兩個為true 返回後面的值
+                兩個值有false 返回前面的值
+            &&
+                第一個值true 必然返回第二個值
+                第一個值fasle 直接返回第1個值
+            ||
+                第一個值true 直接返回第1個值 
+                第一個值fasle 返回第二個值
+            
+        */
+
+      // &&
+      var result = true && false;
+      // true && alert('true');
+      // false && alert("false");
+      // result=5 && 6; // 6
+      // result = 0 && 2; //0
+      // result = 2 && 0; //0
+      // result = NaN && 0; //NaN
+      // result = 0 && NaN; //0
+
+      
+      // ||
+      // result = false || true; //true
+      // false || alert('會看第二個值');
+      // true || alert("不看了");
+      
+      // result = 2 || 1; // 2
+      // result = 0 || 2;  //2
+      // result = NaN || 0 ; //0
+      
+      result="" || 'hello';
+      result=-1 || 'hello'
+      console.log("result = " + result);
+      
+      // console.log("result = " + result);
+      // !
+      var a = true;
+      // !a;
+      a = !a;
+      // console.log("a = " + a);
+
+      var b = 10;
+      b = !!b;
+      // console.log("b = " + b);
+      // console.log(typeof b);
+
+      // 指派
+      /* 
+            = 
+            +=
+                a+=5 > a=a+5
+            -=
+                a-=5 > a=a-5
+            *=
+
+            /=
+            
+            %=
+        */
+      var a = 10;
+      // a=a+5;
+      a += 5;
+      console.log("a = " + a);
+    </script>
+  </body>
+</html>

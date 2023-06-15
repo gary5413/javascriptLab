@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom read</title>
+    <link rel="stylesheet" href="../style.css">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <style>
+        .btnList{
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>DOM</h1>
+    </header>
+    <div class="container">
+        <div id="total">
+			<div class="inner">
+				<p>
+					你喜歡哪個城市
+				</p>
+				<ul id="city">
+					<li id="tpe">臺北</li>
+					<li>桃園</li>
+					<li>台中</li>
+					<li>苗栗</li>
+				</ul>
+			</div>
+
+			<div class="inner">
+				gender:
+				<input class="hello" type="radio" name="gender" value="male"/>
+				Male
+				<input class="hello" type="radio" name="gender" value="female"/>
+				Female
+				<br>
+				<br>
+				name:
+				<input type="text" name="name" id="username" value="abcde"/>
+			</div>
+		</div>
+		<div id="btnList">
+			<div class="btnList"><button id="btn01">搜尋#tpe節點</button></div>
+			<div class="btnList"><button id="btn02">找所有li節點</button></div>
+			<div class="btnList"><button id="btn03">搜尋name=gender的所有節點</button></div>
+			<div class="btnList"><button id="btn04">搜尋#city下所有li節點</button></div>
+			<div class="btnList"><button id="btn09">返回#username的value属性值</button></div>
+			<div class="btnList"><button id="btn10">设置#username的value属性值</button></div>
+			<div class="btnList"><button id="btn11">返回#bj的文本值</button></div>
+            <hr>
+			<div class="btnList"><button id="btn12">創建一個中壢節點</button></div>
+			
+			<div class="btnList"><button id="btn14">使用中壢節點替換臺北節點</button></div>
+			<div class="btnList"><button id="btn15">刪除臺北</button></div>
+			<div class="btnList"><button id="btn16">讀取#city HTML</button></div>
+			<div class="btnList"><button id="btn17">設定#tpe HTML程式碼</button></div>
+
+		</div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script>
+        /* 
+            定義一個函數 來綁定按鈕點擊事件 
+            設計兩個參數一個id ,fun
+        */
+        function myClick(id,fun){ 
+            let btn=document.getElementById(id);
+            btn.onclick=fun;
+        };
+        window.onload=function(){
+            //尋找#tpe節點
+            let btn01=document.getElementById('btn01');
+            btn01.onclick=function(){
+                // console.log('click')
+                let tpe=document.getElementById('tpe');
+                console.log(tpe)
+                // innerHTML 通過此屬性可以取得html內容
+                console.log(tpe.innerHTML)
+            }
+            // 尋找所有li節點
+            let btn02=document.getElementById('btn02');
+            btn02.onclick=function(){
+                /* 
+                getElementsByTagName() 
+                此方法會返回一個類陣列  
+                */
+                let list=document.getElementsByTagName('li');
+                console.log(list)
+                console.log(list.length)
+                for(let i=0;i<list.length;i++){
+                    console.log(list[i].innerHTML);
+                }
+            }
+            //查找name=gender的所有节点
+            let btn03=document.getElementById('btn03');
+            btn03.onclick=function(){
+                let input=document.getElementsByName('gender');
+                // console.log(input)
+                for(let i=0;i<input.length;i++){
+                    /* 
+                    innerHTML 讀取有開始結束標籤的
+                    自己獨立標籤的這個沒有意義
+                    */
+                    
+                    // console.log(input[i].innerHTML);
+                    console.log(input[i].textContent);
+                    // console.log(input[i].innerText);
+                }
+            }
+
+            /* 
+                如果讀取元素節點屬性
+                    直接使用 元素.屬性
+                        元素.id .name .value
+                    唯獨class 不行
+                    元素.className
+            */
+
+            //查找#city下所有li节点
+            let btn04=document.getElementById('btn04');
+            btn04.onclick=function(){
+                let city=document.getElementById('city');
+                let list=city.getElementsByTagName('li');
+                for(let i=0;i<list.length;i++){
+                    console.log(list[i].innerHTML);
+                }
+            }
+
+			
+
+
+		
+                /* 
+                innerText()
+                該屬性可以獲取元素文字內容
+                */
+               
+               
+            
+
+		
+            
+			//读取#username的value属性值
+            myClick('btn09',function(){
+                let username=document.getElementById('username');
+                //
+                console.log(username.value); 
+            })
+            
+			//设置#username的value属性值
+            myClick('btn10',function(){
+                let username=document.getElementById('username');
+                username.value='setting value from javascript';
+            })
+            
+			//返回#tpe的文本值
+            myClick('btn11',function(){
+                let tpe=document.getElementById('tpe');
+                // console.log("innerHTML:"+tpe.innerHTML);
+                // console.log("innerText:"+tpe.innerText);
+
+            })
+            // ===============================================================
+            /* 
+            
+			
+            */
+            // 創建一個中壢節點
+            myClick('btn12',function(){
+                console.log('123');
+                /* 
+                    document.createElement()
+                        創建一個元素節點
+                */
+                let li=document.createElement('li');
+               
+                
+                // 將文本節點設定 元素節點
+                /* 
+                    appendChild()
+                        像一個父節點添加子節點
+                */
+                // let setText=document.createTextNode('中壢');
+                // li.appendChild(setText);
+                li.innerHTML='中壢';
+                let city=document.getElementById('city');
+                city.appendChild(li);
+
+            })
+          
+            let city=document.getElementById('city');
+            let tpe=document.getElementById('tpe');
+			// 使用中壢節點替換臺北節點
+            myClick('btn14',function(){
+                let li=document.createElement('li');
+                let setText=document.createTextNode('中壢');
+                li.appendChild(setText);
+                // city.replaceChild(li,tpe) // 有問題
+            })
+            // 刪除臺北
+			myClick('btn15',function(){
+                /* 
+                    removeChild()
+                        父節點.removeChild(子節點)
+                */ 
+                city.removeChild(tpe);
+            })
+            // 讀取#city HTML
+			myClick('btn16',function(){
+                console.log(city.innerHTML);
+            })
+            // 設定#tpe HTML程式碼
+            myClick('btn17',function(){
+                    tpe.innerHTML='內壢'
+            })
+        } // onload 
+    </script>
+</body>
+</html>

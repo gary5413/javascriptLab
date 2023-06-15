@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event object</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        #areaDiv{
+            border: 2px solid black;
+            width: 300px;
+            height: 200px;
+            margin: 5px;
+        }
+        #showMsg{
+            border: 2px solid black;
+            width: 300px;
+            height: 100px;
+            margin: 5px;
+        }
+        .con{
+            background-color: lightblue;
+            color: white;
+            padding: 5px;
+            width: 500px;
+            height: 100px;
+            
+        }
+        .box{
+            background-color: lightgreen;
+            /* padding: 5px; */
+            width: 300px;
+            height: 50px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>event object</h1>
+    </header>
+    <div class="container">
+        <div class="con">
+            <div class="box"></div>
+        </div>
+        <input type="text" id="input">
+        <hr>
+        <div id="areaDiv"></div>
+        <div id="showMsg"></div>
+    </div>
+    <script>
+        window.onload=function(){
+            let areaDiv=document.getElementById('areaDiv')
+            let showMsg=document.getElementById('showMsg')
+            areaDiv.onmousemove=function(event){
+                /* 
+                    event
+                        事件物件 封裝了一些事件屬性資料
+                */
+                console.log(event);
+                let x=event.pageX;
+                let y=event.pageY;
+                showMsg.innerHTML=`x=${x},y=${y}`;
+            }
+            
+            // event keyCode
+            let input=document.getElementById('input');
+            input.onkeydown=function(e){
+                console.log(e.keyCode);
+            }
+            // 
+            document.querySelector('.con').addEventListener('click',clicked);
+            document.querySelector('.box').addEventListener('click',clicked);
+            function clicked(event){
+                console.log(`the click that was attached to,${event.currentTarget.className},is currently at,${event.target.className}`);
+            }
+        }
+    </script>
+</body>
+</html>

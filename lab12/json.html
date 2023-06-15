@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>json</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>JSON</h1>
+    </header>
+    <div class="container"></div>
+    <script>
+      /* 
+            JSON
+                javascript只認識js
+                python只認識python 
+                java 只認識java
+
+            創出共同識別的資料
+            JavaScript Object Notation 
+            前後端 共同的資料傳遞
+            屬性名稱 必須加雙引號
+
+            JSON物件{}
+            JSON陣列[]
+
+        */
+
+      /* 
+            json >>> js物件
+                JSON.parse()
+        */
+      let dataJsonObj = '{"name":"Gary","class":"BDSE31"}';
+      let dataJsonArr =
+        '[{"name":"Gary1","class":"BDSE31"},{"name":"Gary2","class":"BDSE31"},{"name":"Gary3","class":"BDSE31"}]';
+      //    console.log(dataJsonObj);
+      //    console.log(typeof dataJsonObj);
+      let obj = JSON.parse(dataJsonObj);
+      let objArr = JSON.parse(dataJsonArr);
+        console.log(obj)
+        console.log(typeof obj);
+        console.log(obj.name)
+        console.log(obj.class)
+        console.log(objArr);
+        console.log(objArr[0].name);
+
+      /* 
+       js物件 >>> json
+       JSON.stringify() 
+       但會忽略函示部分
+       */
+      let obj2 = { 
+        name: "test", 
+        class: "f304", 
+        sayHi:function(){
+          console.log('hello');
+        }
+      };
+      let dataJson2=JSON.stringify(obj2);
+      console.log(dataJson2);
+      /* 
+        var emps = [
+          { "name": "Tom", "workYears": 3, "salary": 35000 },
+          { "name": "Jack", "workYears": 5, "salary": 40000 }, 
+          { "name": "Mary", "workYears": 7, "salary": 45000 }];
+          
+          for (var i = 0, max = emps.length; i < max; i++) { 
+            console.log(emps[i].name); console.log(emps[i].workYears); 
+            console.log(emps[i].salary);
+          }
+        */
+    </script>
+  </body>
+</html>

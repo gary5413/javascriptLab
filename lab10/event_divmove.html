@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>keyboard</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            position: absolute;
+            /* left:0;
+            top:0; */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>keyboard</h1>
+    </header>
+    <div class="container">
+        
+        <div id="box1"></div>
+    </div>
+    <script>
+        window.onload=function(){
+            let speed=20;
+            let dir=0;
+            let box1=document.getElementById('box1');
+            document.onkeydown=function(){
+                // dir=event.keyCode;
+                // ===============================
+                console.log(event.keyCode);
+                // let speed=20;
+                switch(event.keyCode){
+                    case 37:
+                        /*  
+                            .style.left=數字+px 
+                            offsetLeft/offsetTop 是元素本身相對於母元素的水平/垂直距離。
+                                回傳數字
+                        */
+                        // box1.style.left=box1.offsetLeft - speed + 'px';
+                        box1.style.left=box1.offsetLeft - speed + 'px';
+                        break;
+                    case 39:
+                        box1.style.left=box1.offsetLeft + speed + 'px';
+                        // console.log(box1.style.left)
+                        // box1.style.left=box1.style.left + speed + 'px';
+                        break;
+                    case 38:
+                        box1.style.top=box1.offsetTop - speed + 'px';
+                        break;
+                    case 40:
+                        box1.style.top=box1.offsetTop + speed + 'px';
+                        break;
+                    }
+
+            }
+
+            // 開定時器來控制div移動
+                // setInterval(function(){
+                //     switch(dir){
+                //     case 37:
+                //         box1.style.left=box1.offsetLeft - speed + 'px';
+                //         break;
+                //     case 39:
+                //         box1.style.left=box1.offsetLeft + speed + 'px';
+                //         break;
+                //     case 38:
+                //         box1.style.top=box1.offsetTop - speed + 'px';
+                //         break;
+                //     case 40:
+                //         box1.style.top=box1.offsetTop + speed + 'px';
+                //         break;
+                //     }
+                // },30)
+           
+            document.onkeyup=function(){
+                // dir=0;
+            }
+
+
+        }
+        /* 
+            onkeydown
+            onkeyup
+        */
+        
+        
+    </script>
+</body>
+</html>

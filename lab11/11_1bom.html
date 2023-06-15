@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOM</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>BOM</h1>
+    </header>
+    <div class="container">
+        
+        <!-- <a href="../lab10/eventbubble.html">eventbubble.html</a> -->
+        <a href="javascript:history.forward()">上一頁</a>
+        <!-- <a href="javascript:history.back()"></a> -->
+        <p id="demo"></p>
+    </div>
+    <script>
+        /* 
+            BOM
+                瀏覽器物件
+            BOM物件
+                window
+                    瀏覽器窗口 也是網頁中的全域物件
+                navigator
+                    當前瀏覽器訊息 
+                location
+                    當前瀏覽器的url 通過此物件可以取得
+                history
+                    瀏覽器的歷史紀錄
+                        由於隱私原因 該物件不能取得 上一頁 下一頁
+                        該操作只在當次訪問有效
+                screen
+                    只使用者螢幕資料
+        */
+       console.log(window);
+       window.console.log()
+    //    window.alert()
+    // window.console.time()
+    // window.console.timeEnd()
+    /* 
+        window.confirm 回傳boolean
+    */  
+        let text = "Press a button!\nEither OK or Cancel.";
+        // window.confirm('回答問題')
+        if (confirm(text) == true) {
+            text = "You pressed OK!";
+        } else {
+            text = "You canceled!";
+        }
+        document.getElementById("demo").innerHTML = text;
+    /* 
+        navigator
+            
+    */
+       console.log(navigator);
+    //    console.log(navigator.appCodeName);
+    //    console.log(navigator.appName);
+    //    console.log(navigator.userAgent);
+    /* 
+        history
+            back()
+            forward()
+            go()
+    */
+       console.log(history);
+    //    console.log(history.length);
+    /* 
+        location
+            reload()
+            replace(url)
+    */
+        console.log(location);
+    //    console.log(location.host);
+    //    console.log(location.hostname);
+       console.log(location.href);
+    //    console.log(location.pathname);
+    //    console.log(location.port);
+    //    console.log(location.protocol);
+    //    console.log(location.search);
+    </script>
+</body>
+</html>

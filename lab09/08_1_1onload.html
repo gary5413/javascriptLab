@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>onload</title>
+    <script>
+        /* 
+        caught TypeError: Cannot set properties of null (setting 'onclick')
+    at o
+        */
+        /* 
+            html 從上到下執行
+            一行一行執行
+            如果script 標籤寫在上面的時候
+            如果 元素未載入完成時 會null
+        */
+        /* 
+            onload事件會在整個頁面載入後執行
+            為window綁定一個事件
+                會載入完成後才執行
+                可以確保我們的dom物件都載入好 才執行
+            window.onload=function(){};    
+        */
+        // let btn=document.getElementById('btn');
+        // console.log(btn);
+        // btn.onclick=function(){
+        //     console.log('123');
+        // }
+
+        window.onload=function(){
+            
+            // let btn=document.getElementById('btn');
+            // console.log(btn)
+            // btn.onclick=function(){
+                //     console.log('click')
+                // }
+                // let bdse31='gary';
+        };
+    </script>
+</head>
+<body>
+    <button id="btn0" onclick="console.log('123')">button</button>
+    <button id="btn">Button</button>
+    <button id="btn1">button1</button>
+    <button id="btn2">button2</button>
+    <!-- 
+        性能 
+        下面稍微快一點 
+    
+     -->
+     <script>
+         /* 
+                addEventListener()
+                    1.參 事件名稱 不用on
+                    2.參 函數
+                    3.參 是否捕獲階段觸發 預設false
+
+                多個事件執行 
+            */
+            let btn2=document.getElementById('btn2');
+            btn2.addEventListener('click',function(){
+                console.log('add 1')
+            },false);   
+            btn2.addEventListener('click',function(){
+                console.log('add 2')
+            },false);   
+            
+            let btn1=document.getElementById('btn1');
+            // 此寫法只能綁一個函數
+            btn1.onclick=function(){
+                console.log('click1')
+            }   
+            btn1.onclick=function(){
+                console.log('click2')
+            }
+     </script>
+</body>
+</html>

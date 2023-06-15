@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom > css</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            transition: .6s;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn1">Button1</button>
+    <button id="btn2">Button2</button>
+    <hr>
+    <div id="box"></div>
+    <script>
+        window.onload=function(){
+            /* 
+                修改box css
+             */
+            let box=document.getElementById('box');
+            let btn1=document.getElementById('btn1');
+            btn1.onclick=function(){
+                /* 
+                元素.style.樣式='值'
+                
+                如果css樣式中含有- 
+                在js不合法
+                修改成駝峰
+                
+                此為標籤內屬性改變 優先級較高
+                
+                如果<style/> 內屬性設定有 !important js就無法修改樣式 
+                */
+               box.style.width='200px';
+               box.style.height='200px';
+               box.style.borderRadius='50%';
+               // 
+               box.style.backgroundColor='yellow';
+            }
+            let btn2=document.getElementById('btn2');
+            btn2.onclick=function(){
+                /* 
+                    注意 讀取時 也是讀取標籤內樣式
+                        無法讀取<style/>
+                */
+                // console.log(box.style.width);
+                /* 
+                    getComputedStyle() 獲取當前元素樣式
+                        可以通過樣式名來讀取樣式
+                        1.參 指定元素
+                        2.參 偽元素
+                */
+                let boxStyle=window.getComputedStyle(box)
+                // console.log(boxStyle.length);
+                // console.log(boxStyle);
+                // console.log(boxStyle.width);
+                // console.log(boxStyle.backgroundColor);
+                /* 
+                    可見高度/可見寬度
+                    clientWidth
+                    clientHeight
+                        不帶px 返回數字 可以直接進行計算
+                        不包括border 包括padding
+                */
+               /* 
+                    offsetWidth
+                    offsetHeight
+               */
+                /* 
+                    offsetParent
+                */
+               /* 
+                    offsetTop
+                    offsetLeft
+               */
+               /* 
+                    scrollLeft
+                    scrollTop
+               */
+                // getStyle()自定義
+                // console.log(getStyle(box,'backgroundColor'));
+                // console.log(getStyle(box,'width'));
+            }
+            function getStyle(obj,name){
+                return window.getComputedStyle(obj)[name];
+            }
+
+        }
+    </script>
+</body>
+</html>

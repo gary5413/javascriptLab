@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        使用工廠方法創建物件
+
+        會混淆 
+        不清楚你現在是函數還是
+        */
+      /*   var objA={
+            name:'',
+            age:18,
+            gender:'male',
+            sayName:function(){
+                console.log(this.name);
+            }
+        }
+        var objB={
+            name:'',
+            age:18,
+            gender:'male',
+            sayName:function(){
+                console.log(this.name);
+            }
+        } */
+        function createPerson(name,age,gender){
+            // 
+            let obj={};
+            // 
+            // obj.name='gary';
+            obj.name=name;
+            // obj.age=18;
+            obj.age=age;
+            // obj.gender='mela';
+            obj.gender=gender;
+            // 
+            obj.sayName=function(){
+                console.log(this.name);
+            }
+            
+            return obj;
+        }
+        let obj2=createPerson('gary1',18,'mela');
+        let obj3=createPerson('gary2',19,'mela');
+        let obj4=createPerson('gary3',20,'mela');
+        // console.log(obj2);
+        // console.log(obj3);
+        // console.log(obj4);
+
+        function createDog(name,age){
+            let obj={};
+            obj.name=name;
+            obj.age=age;
+            obj.sayHi=function(){
+                console.log('汪')
+            }
+            return obj;
+        }
+        let dog1=createDog('小白',1);
+        // console.log(dog1)
+        // dog1.sayHi();
+
+        /* 
+        構造函數 js類別 原型
+        第一個字母大寫
+        1. 創建一個新物件
+        2. 新建物件設置函數中this
+        4. 返回新建物件 不需要返回值
+        ========以上都是js幫我們做動
+        3. 執行函數程式
+        
+        
+        */
+        function Person(name,age){
+            // console.log(this);
+            this.name=name;
+            this.age=age;
+            /* 
+                缺點:每一個實作物件都加了一個sayName 
+                    每實作一個物件都會創造一個函數
+            */
+            this.sayName=function(){
+                console.log(this.name)
+            }
+            // this.sayName=fun;
+        }
+
+        
+        // 全域定義函數 只會有一次 會跟物件裡重複新增 效能有些微差異
+        // 但此方法有些問題 可能會命名衝突也不安全
+        // 函數定義在全域會污染全域範圍
+         /* 
+            另一種function寫法
+            節省記憶體 
+            提取函數
+                有個問題 將函數定義全域
+                可能會被別人使用
+        */
+        // function fun(){
+        //     console.log('hello 我是'+this.name);
+
+        // prototype寫法
+        // }
+        // Person.prototype.sayName=function(){
+        //     console.log('hello 我是'+this.name);
+        // };
+        function Dog(name,age){
+            console.log(this);
+            this.name=name;
+            this.age=age;
+            
+        }
+
+        let p1=new Person('Gary1',19);
+        let p2=new Person('Gary2',19);
+        let p3=new Person('Gary3',19);
+        p1.sayName();
+        console.log(p1.sayName == p2.sayName); //false
+        // console.log(p1);
+        // console.log(p2);
+        // console.log(p3);
+
+        /* 
+        instanceof 檢查是否 是該類別 實作
+        */
+        // console.log(p1 instanceof Person);
+        // console.log(p1 instanceof Object);
+
+       
+        
+        // console.log(p1.sayTest == p2.sayTest); //true
+        // p1.sayP();
+
+        /* 
+            原型 prototype
+            我們每創建一個函數 直譯都會向函數添加一個屬性prototype
+                這個屬性對應一個物件 這個物件是我們所謂原型物件
+                如果一般函數 prototype沒有區別
+                但如果是透過建構子生成物件 (new MyClass() 實體化物件）
+                他會創建對象都有一個隱含屬性
+                    指向該建構子的原型物件 我們可以透過 _proto_ 來訪問該屬性
+
+                原型物件都是公共的區域
+                該實作物件都可以訪問該原型物件
+
+                當我們使用該屬性或方法 他會先在實作物件自身尋找如果有直接使用
+                    如果沒有則會去原型物件尋找
+
+                以後我們要使用建構子物件時 可以將屬性和方法統一加在 原型物件
+
+        */
+        function MyClass(){
+
+        }
+        // 在MyClass的原型物件 增加a屬性
+        MyClass.prototype.a=123;
+        // 在MyClass的原型物件 增加方法
+        MyClass.prototype.sayHello=function(){
+            console.log('hello!!!');
+        }
+
+        let mc1=new MyClass();
+        let mc2=new MyClass();
+        // console.log(mc1.a)
+        console.log(mc1.a) // a>123
+        mc1.a='我是mc1的a';
+        console.log(mc1.a) // 
+        mc1.b='我是mc1的b';
+        mc1.sayHello();
+        // console.log(MyClass.prototype);
+        // console.log(mc1.__proto__ == MyClass.prototype); //true
+
+        /* in 檢查物件是否有某個屬性 */
+        // console.log("a" in mc1);
+        // console.log("b" in mc1);
+
+        /* hasOwnProperty() 檢查物件自己有沒有該屬性 */
+        // console.log(mc1.hasOwnProperty("a"))
+        // console.log(mc1.hasOwnProperty("hasOwnProperty"))
+        // console.log(mc1.__proto__.hasOwnProperty("hasOwnProperty"))
+        // console.log(mc1.__proto__.__proto__.hasOwnProperty("hasOwnProperty"))
+
+        /* 
+            原型鏈
+            
+        */
+
+    </script>
+</body>
+</html>

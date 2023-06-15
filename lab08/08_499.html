@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lab</title>
+    <link rel="stylesheet" href="../style.css" />
+    <style>
+       /* hw1 */
+       .homeworkTable1 {
+        border: 2px solid blue;
+        background-color: lightblue;
+        text-align: center;
+        border-collapse: collapse;
+        width: 800px;
+        height: 400px;
+        margin: 0 auto;
+      }
+      tr {
+        border: 2px solid blue;
+      }
+      tr:hover {
+        background-color: lightgrey;
+      }
+      h3 {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>99乘法表</h1>
+    </header>
+    <div id="homework1">
+      <h3>homework1</h3>
+      <table class="homeworkTable1" id="homeworkTable1"></table>
+    </div>
+    <script>
+       // homework1
+       let hw1table = document.getElementById("homeworkTable1");
+      
+      for (let i = 2; i < 10; i++) {
+        let hw1tr = document.createElement("tr");
+        for (let j = 1; j < 10; j++) {
+          let hw1td = document.createElement("td");
+          hw1td.innerHTML += `${i} * ${j} = ${i * j}`;
+          hw1tr.appendChild(hw1td);
+        }
+        hw1table.appendChild(hw1tr);
+      }
+    </script>
+  </body>
+</html>

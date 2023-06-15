@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lab</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>operater2</h1>
+    </header>
+    <script>
+      /* 
+            透過比較運算子 比較兩個值的大小差異
+            關係成立 true 反之 false
+        
+            >
+            >=
+            <
+            <=
+            非數字比較時 會轉成數字在比較
+            ==
+                比較兩個值是否相等
+            ===
+
+        */
+      var result = 5 > 10; //false
+      result = 5 > 4; //true
+      result = 5 > 5; //false
+      result = 5 >= 5; //true
+      result = 5 < 4; //false
+      result = 4 <= 4; //true
+      // console.log(result)
+
+      // console.log(1>true) //false
+      // console.log(1>=true) //true
+      // console.log(1>'0') //true
+      // console.log(10>null) //true
+      // console.log(10>NaN) // false
+      // 任何值跟NaN比較都是false
+      // console.log(true > false) //true
+
+      // console.log(10<='hello') //false
+      console.log('1'<'5') //true
+      console.log(11<'5') //false
+      // 轉成unicode編碼來比較 16進制
+      // console.log('11'<'5') //true
+      // console.log('a'<'b')  //0001 <0002
+      // 比較字串編碼時一位一位比較
+      // 如果兩位一樣則比較下一位 所以用它來對英文進行排序
+      // console.log('abc'<'b') //true
+      // console.log('bbc'<'b') //fasle
+      // 中文比較沒有意義
+      // 如果比較兩個字串 會得到不如預期的結果
+      // 注意比較字串時一定要轉型
+      // console.log('123456' < '5'); //true
+      // console.log('123456' < +'5'); //fasle
+
+      // /u 四位編碼 16進制
+      console.log("\u00BF");
+      console.log("\u2620"); //骷魯頭
+
+      // body頁面要轉成10進制
+
+      // ==
+
+      // console.log(1 == 1); //true
+      var a = 10;
+      // console.log(a == 4); //false
+      // 當不同資料型態時，原則會轉成數字 在比較
+      // console.log(1 == "1"); //true
+      // true轉乘1
+      // console.log(true == "1"); //true
+      // 沒有轉成0
+      // console.log(null == 0); //false
+      // 編碼比較
+      // console.log("a" == "1"); //fasle
+      // undefined 衍生自null
+      // console.log(undefined == null); //true
+      // NaN不和任何值相等 包括本身
+      // console.log(NaN == NaN); //false
+      var b = NaN;
+      // 判斷b是否NaN
+      // console.log(b==NaN);
+      /* 可以通過isNaN()函數 來判斷 */
+      // console.log(isNaN(b));
+
+      // !=
+      // console.log(10 != 5);
+      // console.log("abcd" != "abcd"); //fasle
+      // === 嚴格相等 不會自動轉資料型態
+      // console.log("123" == 123); //true
+      // console.log("123" === 123); //false
+      // console.log(undefined === null);
+
+      // !== 嚴格不相等 不會自動轉資料型態
+      // console.log(1 != "1");
+      // console.log(1 !== "1");
+
+      /* 
+            三元
+                語法:
+                條件 ? 語句1 : 語句2
+                執行時條件為true 執行語句1
+                執行時條件為false 執行語句2
+                
+                如果條件為非boolean
+                會轉成boolean 
+        */
+      // true?alert('1'):alert('2');
+
+      var a = 10;
+      var b = 20;
+      // a>b?alert('大'):alert('小')
+
+      // 得到ab中的最大值
+      var max = a > b ? a : b;
+      console.log(max);
+      var c = 50;
+      // 得到abc中的最大值
+      // max=max>c?max:c;
+      // 不推薦使用 不方便閱讀
+      var max = a > b ? (a > c ? a : c) : (b > c ? b : c);
+      console.log(max);
+      "hello" ? console.log("hello") : console.log("No");
+      "" ? console.log("air") : console.log("air2");
+    </script>
+  </body>
+</html>

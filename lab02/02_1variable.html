@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lab02</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>variable</h1>
+    </header>
+    <script>
+      /*
+            1.資料 值 都是一些不可變的 ,可直接使用
+
+            2. 變數 存放資料的地方 ,進行描述
+            undefined 我們沒有覆值;
+
+            3. 變數命名
+                可以使用字母 下底線_ 錢字號$開頭
+                不可以用數字
+                不能用保留字
+                駝峰命名 helloWorld xxxYyyZzz
+        */
+      var a; // 宣告
+      console.log(a);
+      a = 123; // 覆值
+      console.log(a);
+      /* 
+    // java寫法 
+    // if(true){
+    //     int i=5;
+    // }
+    // System.outprintln(i);
+    */
+      if (true) {
+        var i = 5;
+      }
+      console.log(i);
+      /* 
+      (function(){
+        var j=5;
+        console.log(j);
+    })();
+      */
+      if (true) {
+        var bdse31 = "Gary";
+      }
+      console.log(bdse31);
+      if (true) {
+        let f304 = "bdes31";
+      }
+      console.log(f304);
+      // let
+      // let宣告變數 區塊外無效
+      if (true) {
+        let i = 5;
+      }
+      // console.log(i); // is not defined
+      // 注意switch let宣告
+      /* switch指令將整個條件分歧區塊視為單一區塊
+            case是標籤語法 不是區塊
+        */
+      switch (i) {
+        case 0:
+          let value = "x:0";
+        case 1:
+        // let value='x:1'; // 變數名稱重複
+      }
+      // const
+      const PI = 3.1415926;
+      const TAX = 1.08;
+      var price = 100;
+      console.log(price * TAX);
+    </script>
+  </body>
+</html>
